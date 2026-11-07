@@ -3,397 +3,489 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#081a36">
-  <title>Данил & Варвара — 27 января 2027</title>
-  <meta name="description" content="Приглашение на свадьбу Данила и Варвары — 27 января 2027 года.">
+  <title>Данил & Варвара — свадебное приглашение</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comforter&family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
+      --black: #111111;
       --navy: #081a36;
-      --navy2: #10294d;
-      --blue: #6e9bc8;
-      --ice: #dceafa;
-      --pale: #f3f7fc;
-      --silver: #b9c9dc;
-      --ink: #172d49;
+      --blue: #173b67;
+      --mid-blue: #4f7da9;
+      --light-blue: #91b5d8;
+      --silver: #c6ced9;
+      --white: #ffffff;
+      --cream: #f5f7fa;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      margin: 0;
-      background: var(--navy);
-      color: var(--pale);
       font-family: "Manrope", Arial, sans-serif;
-      font-weight: 300;
+      color: var(--navy);
+      background: var(--navy);
+      line-height: 1.7;
     }
-
-    a { color: inherit; }
-    .page { overflow: hidden; }
 
     .hero {
-      min-height: 94vh;
+      min-height: 100vh;
+      padding: 80px 22px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 72px 22px 64px;
-      position: relative;
+      color: white;
       background:
-        radial-gradient(ellipse at 50% 35%, rgba(92,137,187,.26), transparent 48%),
-        linear-gradient(145deg, #07152d, #10294d 56%, #081a36);
+        radial-gradient(ellipse at 50% 35%, rgba(79,125,169,.34), transparent 55%),
+        linear-gradient(145deg, #081a36, #102d50 55%, #081a36);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero:before, .hero:after {
-      content: "✧";
+    .hero::before,
+    .hero::after {
+      content: "";
       position: absolute;
-      color: rgba(220,234,250,.65);
-      font-size: 25px;
-      top: 15%;
-      left: 13%;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(198,206,217,.22);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
-    .hero:after {
-      content: "✦";
-      top: 23%;
-      left: auto;
-      right: 14%;
-      font-size: 15px;
+    .hero::before {
+      top: -170px;
+      left: -130px;
+    }
+
+    .hero::after {
+      bottom: -190px;
+      right: -120px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
-      letter-spacing: .28em;
+      color: var(--light-blue);
+      font-size: 11px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      font-size: 10px;
-      color: var(--ice);
+      margin-bottom: 25px;
     }
 
-    h1, h2, .script {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 500;
+    .names {
+      font-family: "Comforter", cursive;
+      font-weight: 400;
+      font-size: clamp(65px, 13vw, 125px);
+      line-height: 1.25;
+      color: #f5f7fb;
+      text-shadow: 0 4px 24px rgba(0,0,0,.2);
+      margin-bottom: 15px;
     }
 
-    h1 {
-      font-size: clamp(58px, 11vw, 108px);
-      line-height: .9;
-      margin: 26px 0 18px;
+    .hero-subtitle {
+      color: #d7e2ef;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(21px, 4vw, 30px);
+      letter-spacing: 2px;
+      margin-top: 15px;
     }
 
-    .amp {
-      color: #9dbbdc;
-      font-style: italic;
-    }
-
-    .intro {
-      max-width: 520px;
-      line-height: 1.8;
-      color: #d2e0ef;
+    .hero-date {
+      color: var(--light-blue);
       font-size: 14px;
-    }
-
-    .date {
-      margin-top: 32px;
-      font-size: 17px;
-      letter-spacing: .18em;
-      color: #fff;
+      letter-spacing: 3px;
+      margin-top: 35px;
     }
 
     .ornament {
-      width: 86px;
+      width: 100px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--silver), transparent);
-      margin: 25px auto;
+      background: var(--silver);
+      opacity: .65;
+      margin: 28px auto;
     }
 
     .section {
-      padding: 78px 22px;
+      padding: 90px 22px;
       text-align: center;
     }
 
     .section.light {
-      background: var(--pale);
-      color: var(--ink);
+      background: var(--cream);
+      color: var(--navy);
     }
 
-    .section.blue { background: #10294d; }
+    .section.dark {
+      background: linear-gradient(145deg, #102d50, #081a36);
+      color: white;
+    }
 
-    .section h2 {
+    .section.light .eyebrow {
+      color: var(--navy);
+    }
+
+    .section.dark .eyebrow {
+      color: var(--light-blue);
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
       font-size: clamp(38px, 7vw, 58px);
-      margin: 0 0 15px;
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--navy);
+    }
+
+    .section.dark h2 {
+      color: white;
     }
 
     .section p {
-      line-height: 1.8;
       max-width: 650px;
-      margin: 0 auto;
-      font-size: 14px;
+      margin: 0 auto 18px;
+      color: var(--navy);
+      font-size: 15px;
     }
 
-    .countdown-wrap {
-      max-width: 700px;
-      margin: 32px auto 0;
+    .section.dark p {
+      color: #e1e9f2;
+    }
+
+    .date-large {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 7vw, 52px);
+      color: var(--navy);
+      margin: 25px 0 5px;
+    }
+
+    .time {
+      color: var(--blue);
+      font-size: 14px;
+      letter-spacing: 3px;
     }
 
     .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      display: flex;
+      justify-content: center;
+      gap: clamp(12px, 4vw, 35px);
+      margin: 40px auto 0;
+      flex-wrap: wrap;
     }
 
-    .timebox {
-      padding: 19px 8px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(220,234,250,.18);
-      border-radius: 13px;
+    .countdown-item {
+      min-width: 65px;
     }
 
-    .timebox strong {
-      display: block;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(34px, 7vw, 52px);
-      font-weight: 500;
+    .countdown-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      color: var(--navy);
+      line-height: 1.1;
     }
 
-    .timebox span {
-      font-size: 9px;
-      letter-spacing: .13em;
-      color: #c5d8ec;
+    .countdown-label {
+      font-size: 10px;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      color: var(--blue);
     }
 
     .venue-card {
       max-width: 620px;
-      margin: 30px auto 0;
-      padding: 28px 20px;
-      border: 1px solid rgba(185,201,220,.4);
-      border-radius: 16px;
+      margin: 35px auto 0;
+      padding: 42px 25px;
+      border: 1px solid var(--silver);
+      background: white;
     }
 
     .venue-name {
-      font: 500 38px "Cormorant Garamond", Georgia, serif;
-      margin: 4px 0 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .venue-address {
+      font-size: 14px;
+      color: var(--navy);
+      margin-bottom: 25px;
     }
 
     .button {
       display: inline-block;
-      margin-top: 24px;
-      padding: 13px 23px;
-      border-radius: 999px;
+      padding: 14px 25px;
+      background: var(--navy);
+      color: white;
       text-decoration: none;
-      color: var(--navy);
-      background: var(--ice);
-      font-size: 12px;
-      letter-spacing: .06em;
-      font-weight: 600;
-      transition: transform .2s, background .2s;
+      font-size: 11px;
+      letter-spacing: 2px;
+      transition: background .2s ease;
+      border: 1px solid var(--navy);
     }
 
     .button:hover {
-      transform: translateY(-2px);
-      background: white;
+      background: var(--blue);
+    }
+
+    .dress-code-text {
+      margin-bottom: 30px;
     }
 
     .palette {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin: 28px auto 14px;
+      margin: 35px auto 20px;
     }
 
     .swatch {
-      width: 45px;
-      height: 45px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.75);
-      box-shadow: 0 2px 10px #07152d22;
+      border: 2px solid rgba(8,26,54,.12);
+      box-shadow: 0 3px 12px rgba(8,26,54,.08);
     }
 
-    .note {
-      font-size: 12px !important;
-      color: #6b7d91;
+    .palette-note {
+      color: var(--navy);
+      font-size: 12px;
+      margin-top: 20px;
     }
 
     .form-area {
       max-width: 760px;
-      margin: 30px auto 0;
-      padding: 16px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(220,234,250,.2);
-      border-radius: 16px;
+      margin: 35px auto 0;
+      padding: 15px;
+      background: white;
+      border: 1px solid var(--silver);
     }
 
     .form-frame {
-      display: block;
       width: 100%;
       min-height: 950px;
       border: 0;
-      border-radius: 10px;
+      display: block;
       background: white;
     }
 
-    footer {
-      padding: 42px 20px 52px;
-      text-align: center;
-      color: #b9cce1;
-      font: italic 28px "Cormorant Garamond", Georgia, serif;
+    .signature {
+      font-family: "Comforter", cursive;
+      font-size: 58px;
+      line-height: 1.3;
+      color: white;
+      margin-top: 25px;
     }
 
-    @media (max-width: 480px) {
-      .countdown { gap: 6px; }
-      .timebox { padding: 14px 3px; }
-      .timebox span {
-        font-size: 8px;
-        letter-spacing: .04em;
+    footer {
+      padding: 55px 20px;
+      text-align: center;
+      color: #d7e2ef;
+      background: #06142b;
+    }
+
+    footer p {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .section {
+        padding: 70px 20px;
       }
-      .section { padding: 62px 17px; }
-      .form-area { padding: 8px; }
-      .form-frame { min-height: 1000px; }
+
+      .hero {
+        min-height: 90vh;
+      }
+
+      .names {
+        font-size: clamp(58px, 15vw, 90px);
+      }
+
+      .swatch {
+        width: 49px;
+        height: 49px;
+      }
+
+      .form-area {
+        padding: 5px;
+      }
     }
   </style>
 </head>
 
 <body>
-<div class="page">
 
   <header class="hero">
-    <div class="eyebrow">Приглашение на свадьбу</div>
-    <h1>Данил <span class="amp">&</span><br>Варвара</h1>
-    <div class="ornament"></div>
-    <p class="intro">
-      С огромной радостью приглашаем вас разделить с нами
-      один из самых важных и счастливых дней нашей жизни.
-    </p>
-    <div class="date">27 ЯНВАРЯ 2027</div>
-    <a class="button" href="#details">ПОДРОБНЕЕ О ДНЕ</a>
+    <div class="hero-content">
+      <div class="eyebrow">Приглашение на свадьбу</div>
+
+      <h1 class="names">Данил &amp; Варвара</h1>
+
+      <div class="ornament"></div>
+
+      <p class="hero-subtitle">
+        Будем счастливы разделить этот день с вами
+      </p>
+
+      <div class="hero-date">27 · 01 · 2027</div>
+    </div>
   </header>
 
-  <section class="section blue">
-    <div class="eyebrow">С нетерпением ждём встречи</div>
-    <h2>До нашей свадьбы</h2>
-    <p>Осталось совсем немного времени до начала нашей семейной истории.</p>
+  <section class="section light" id="invitation">
+    <div class="eyebrow">Дорогие близкие</div>
+    <h2>Мы женимся!</h2>
 
-    <div class="countdown-wrap">
-      <div class="countdown" aria-live="off">
-        <div class="timebox"><strong id="days">—</strong><span>дней</span></div>
-        <div class="timebox"><strong id="hours">—</strong><span>часов</span></div>
-        <div class="timebox"><strong id="minutes">—</strong><span>минут</span></div>
-        <div class="timebox"><strong id="seconds">—</strong><span>секунд</span></div>
+    <p>
+      В нашей жизни начинается новая глава, и мы хотим,
+      чтобы вы стали частью этого особенного дня.
+    </p>
+
+    <p>
+      Приглашаем вас разделить с нами радость,
+      любовь и самые тёплые моменты.
+    </p>
+
+    <div class="date-large">27 января 2027</div>
+    <div class="time">НАЧАЛО В 17:00 · МОСКОВСКОЕ ВРЕМЯ</div>
+
+    <div class="countdown" aria-label="Обратный отсчёт">
+      <div class="countdown-item">
+        <div class="countdown-number" id="days">—</div>
+        <div class="countdown-label">Дней</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="hours">—</div>
+        <div class="countdown-label">Часов</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="minutes">—</div>
+        <div class="countdown-label">Минут</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-number" id="seconds">—</div>
+        <div class="countdown-label">Секунд</div>
       </div>
     </div>
   </section>
 
- 
-<section class="section light" id="details">
-  <div class="eyebrow">Где мы встретимся</div>
-  <h2>Место встречи</h2>
+  <section class="section dark" id="details">
+    <div class="eyebrow">Где мы встретимся</div>
+    <h2>Место встречи</h2>
 
-  <div class="venue-card">
-    <div class="venue-name">Ya-Loft 2</div>
+    <div class="venue-card">
+      <div class="venue-name">Ya-Loft 2</div>
 
-    <p>Бутырская улица, 46, строение 3, Москва</p>
+      <p class="venue-address">
+        Бутырская ул., 46, стр. 3, Москва
+      </p>
 
-    <a
-      class="button"
-      style="background:#10294d;color:white"
-      href="https://yandex.ru/maps/?text=%D0%91%D1%83%D1%82%D1%8B%D1%80%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2046%2C%20%D1%81%D1%82%D1%80.%203%2C%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0"
-      target="_blank"
-      rel="noopener">
-      ПОСМОТРЕТЬ НА КАРТЕ
-    </a>
-  </div>
-</section>
+      <a
+        class="button"
+        href="https://yandex.ru/maps/org/ya_loft_1_2/177029651026/"
+        target="_blank"
+        rel="noopener noreferrer">
+        ПОСМОТРЕТЬ НА КАРТЕ
+      </a>
+    </div>
+  </section>
 
-  <section class="section blue">
-    <div class="eyebrow">Пожелания к образам</div>
-    <h2>Дресс-код</h2>
-    <p>
-      Будем рады, если в своих образах вы поддержите нашу
-      зимнюю палитру — оттенки синего, голубого и серебристого.
+  <section class="section light" id="dresscode">
+    <div class="eyebrow">Дресс-код</div>
+    <h2>Цвета нашего дня</h2>
+
+    <p class="dress-code-text">
+      Будем рады, если в ваших образах появятся оттенки
+      нашей палитры. Выбирайте тот, который вам ближе.
     </p>
 
     <div class="palette" aria-label="Цветовая палитра дресс-кода">
+      <span class="swatch" style="background:#111111"></span>
       <span class="swatch" style="background:#081a36"></span>
       <span class="swatch" style="background:#173b67"></span>
       <span class="swatch" style="background:#4f7da9"></span>
       <span class="swatch" style="background:#91b5d8"></span>
-      <span class="swatch" style="background:#c8dced"></span>
-      <span class="swatch" style="background:#eaf1f8"></span>
     </div>
 
-    <p class="note" style="color:#c5d8ec">
-      Это пожелание, а не строгое требование. Главное — ваше присутствие!
+    <p class="palette-note">
+      Чёрный · Тёмно-синий · Синий · Голубой · Светло-голубой
     </p>
   </section>
 
-  <section class="section light" id="rsvp">
-    <div class="eyebrow">Пожалуйста, ответьте до 10 января</div>
+  <section class="section dark" id="rsvp">
+    <div class="eyebrow">Пожалуйста, ответьте</div>
     <h2>Вы с нами?</h2>
+
     <p>
-      Заполните небольшую анкету, чтобы мы могли всё подготовить
-      и позаботиться о вашем комфорте.
+      Пожалуйста, заполните небольшую анкету,
+      чтобы мы могли подготовить всё для вашего комфорта.
     </p>
 
     <div class="form-area">
       <iframe
         class="form-frame"
         src="https://docs.google.com/forms/d/e/1FAIpQLSdADz4cZLm0tWEi8jKanoVWRudTktpIQwK4EHavtIgmLrYI3g/viewform?embedded=true"
-        width="100%"
-        height="950"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Анкета гостей на свадьбу Данила и Варвары">
-        Загрузка…
+        title="Анкета гостей свадьбы Данила и Варвары"
+        loading="lazy">
+        Загрузка анкеты…
       </iframe>
     </div>
   </section>
 
-  <footer>С любовью, Данил & Варвара ♡</footer>
+  <footer>
+    <p>С ЛЮБОВЬЮ И НЕТЕРПЕНИЕМ ЖДЁМ ВАС</p>
+    <div class="signature">Данил &amp; Варвара</div>
+    <p>27 · 01 · 2027</p>
+  </footer>
 
-</div>
+  <script>
+    const weddingDate = new Date("2027-01-27T17:00:00+03:00").getTime();
 
-<script>
-  // Начало свадьбы: 27 января 2027 года, 17:00 по московскому времени.
-  const weddingDate = new Date("2027-01-27T17:00:00+03:00").getTime();
+    function updateCountdown() {
+      const now = Date.now();
+      const distance = weddingDate - now;
 
-  const ids = ["days", "hours", "minutes", "seconds"];
+      if (distance <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
 
-  function updateCountdown() {
-    const diff = weddingDate - Date.now();
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
 
-    if (diff <= 0) {
-      document.getElementById("days").textContent = "0";
-      document.getElementById("hours").textContent = "00";
-      document.getElementById("minutes").textContent = "00";
-      document.getElementById("seconds").textContent = "00";
-      return;
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
     }
 
-    const values = [
-      Math.floor(diff / 86400000),
-      Math.floor((diff % 86400000) / 3600000),
-      Math.floor((diff % 3600000) / 60000),
-      Math.floor((diff % 60000) / 1000)
-    ];
-
-    values.forEach((value, i) => {
-      document.getElementById(ids[i]).textContent =
-        i === 0 ? value : String(value).padStart(2, "0");
-    });
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 
 </body>
 </html>
