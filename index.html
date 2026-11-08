@@ -4,22 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#A9C7E2">
 
-  <title>Данил и Варвара — свадебное приглашение</title>
+  <title>Данила и Варвара — свадебное приглашение</title>
 
-  <!-- Подключение шрифтов: только один раз -->
+  <!-- Единственное подключение шрифта -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --blue: #a9c7e2;
-      --navy: #081a36;
+      --blue: #A9C7E2;
+      --navy: #081A36;
       --black: #111111;
-      --dark-blue: #173b67;
-      --mid-blue: #4f7da9;
-      --light-blue: #91b5d8;
+      --dark-blue: #173B67;
+      --mid-blue: #4F7DA9;
+      --light-blue: #91B5D8;
+      --line: rgba(8, 26, 54, 0.25);
+      --white: rgba(255, 255, 255, 0.7);
     }
 
     * {
@@ -33,248 +36,301 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: var(--blue);
+      background: var(--blue);
       color: var(--navy);
       font-family: "Cormorant Unicase", serif !important;
       font-weight: 400;
       text-align: center;
       overflow-x: hidden;
-      isolation: isolate;
-      position: relative;
     }
 
-    /* Декоративные звёзды */
-    body::before {
-      content: "✦       ✧          ✦       ✧          ✦";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 19px;
-      letter-spacing: 35px;
-      line-height: 115px;
-      overflow: hidden;
-      overflow-wrap: anywhere;
-      padding: 15px;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(255,255,255,.45) 0 1px, transparent 2px),
-        radial-gradient(circle at 82% 12%, rgba(255,255,255,.5) 0 1px, transparent 2px),
-        radial-gradient(circle at 75% 62%, rgba(255,255,255,.4) 0 1px, transparent 2px),
-        radial-gradient(circle at 20% 78%, rgba(255,255,255,.4) 0 1px, transparent 2px);
-      background-size:
-        170px 190px,
-        230px 210px,
-        190px 220px,
-        250px 230px;
-    }
-
-    /* Все заголовки — Great Vibes */
-    h1,
-    h2,
-    h3,
-    .eyebrow,
-    .venue-name,
-    .signature,
-    .hero-subtitle,
-    .date-large,
-    .countdown-number {
-      font-family: "Great Vibes", cursive !important;
-      font-weight: 400 !important;
-      color: var(--navy);
-    }
-
-    h1 {
-      font-size: clamp(64px, 12vw, 112px);
-      line-height: 1.2;
-      margin: 12px 0;
-    }
-
-    h2 {
-      font-size: clamp(48px, 8vw, 72px);
-      line-height: 1.2;
-      margin: 0 0 22px;
-    }
-
-    h3 {
-      font-size: 42px;
-      margin: 12px 0;
-    }
-
-    /* Обычный текст — Cormorant Unicase */
-    p,
-    span,
-    div,
-    a,
-    button,
-    label,
-    input,
-    textarea {
+    /* Все элементы используют один шрифт */
+    h1, h2, h3, h4, p, span, div, a, button, label {
       font-family: "Cormorant Unicase", serif;
-    }
-
-    p {
-      font-size: 19px;
-      line-height: 1.8;
-      margin: 10px auto;
-      max-width: 650px;
       color: var(--navy);
     }
 
+    /* Фоновые звёзды */
+    .star-field {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 17px;
+      text-shadow: 0 0 9px rgba(255,255,255,0.7);
+      animation: twinkle 4s ease-in-out infinite;
+    }
+
+    .star:nth-child(1) { top: 8%; left: 12%; animation-delay: 0s; }
+    .star:nth-child(2) { top: 15%; left: 82%; animation-delay: 1s; font-size: 22px; }
+    .star:nth-child(3) { top: 27%; left: 28%; animation-delay: 2s; }
+    .star:nth-child(4) { top: 36%; left: 91%; animation-delay: .5s; font-size: 13px; }
+    .star:nth-child(5) { top: 48%; left: 7%; animation-delay: 1.5s; font-size: 22px; }
+    .star:nth-child(6) { top: 58%; left: 75%; animation-delay: 2.5s; }
+    .star:nth-child(7) { top: 68%; left: 19%; animation-delay: .8s; font-size: 13px; }
+    .star:nth-child(8) { top: 77%; left: 88%; animation-delay: 1.8s; }
+    .star:nth-child(9) { top: 88%; left: 38%; animation-delay: 2.2s; font-size: 21px; }
+    .star:nth-child(10) { top: 94%; left: 68%; animation-delay: .3s; }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: .35;
+        transform: scale(.8) rotate(0deg);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.25) rotate(45deg);
+      }
+    }
+
+    /* Основной контент поверх звёзд */
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Первый экран */
     .hero {
       min-height: 100vh;
-      padding: 90px 20px 70px;
+      padding: 90px 22px 75px;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      position: relative;
+      align-items: center;
     }
 
     .eyebrow {
-      font-size: 60px;
-      margin-bottom: 10px;
+      max-width: 750px;
+      font-size: clamp(22px, 3.5vw, 30px);
+      line-height: 1.65;
+      letter-spacing: 2px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(58px, 11vw, 104px);
+      line-height: 1.15;
+      font-weight: 400;
+      margin: 25px 0 10px;
     }
 
     .hero-subtitle {
-      font-size: clamp(34px, 6vw, 48px);
-      margin-top: 12px;
+      font-size: clamp(37px, 7vw, 57px);
+      font-weight: 500;
+      margin: 12px 0 25px;
     }
 
     .intro {
-      max-width: 650px;
-      margin: 20px auto 0;
-      font-size: 20px;
+      max-width: 740px;
+      font-size: clamp(22px, 3.5vw, 28px);
+      line-height: 1.7;
+      margin: 15px auto 28px;
     }
 
+    .date-large {
+      font-size: clamp(43px, 8vw, 68px);
+      font-weight: 500;
+      margin: 15px 0 5px;
+    }
+
+    .time {
+      font-size: 23px;
+      letter-spacing: 4px;
+      margin-top: 5px;
+    }
+
+    /* Звёздные разделители */
     .star-divider {
-      margin: 28px auto;
+      margin: 25px auto;
+      font-size: 28px;
+      letter-spacing: 14px;
       color: var(--navy);
-      font-size: 25px;
-      letter-spacing: 12px;
     }
 
+    /* Секции */
     .section {
-      padding: 75px 20px;
+      padding: 65px 20px;
       position: relative;
     }
 
     .section-inner {
       max-width: 850px;
       margin: 0 auto;
+      padding: 45px 30px;
+      border: 1px solid var(--line);
+      outline: 1px solid rgba(255,255,255,.32);
+      outline-offset: 5px;
+      border-radius: 3px;
+      background: rgba(255,255,255,.09);
+      box-shadow: 0 12px 35px rgba(8,26,54,.035);
     }
 
-    .date-large {
-      font-size: clamp(54px, 10vw, 82px);
-      margin: 10px 0;
+    h2 {
+      font-size: clamp(42px, 7vw, 68px);
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0 auto 25px;
     }
 
-    .time {
-      font-size: 25px;
-      letter-spacing: 3px;
-      margin-top: 0;
+    h3 {
+      font-size: clamp(34px, 5vw, 48px);
+      font-weight: 500;
+      margin: 15px auto;
     }
 
+    p {
+      font-size: clamp(20px, 3vw, 25px);
+      line-height: 1.75;
+      max-width: 700px;
+      margin: 12px auto;
+    }
+
+    /* Таймер */
     .countdown {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 24px;
-      margin: 35px auto 0;
+      gap: 30px;
+      margin: 35px auto 10px;
     }
 
     .countdown-item {
-      min-width: 85px;
+      min-width: 95px;
     }
 
     .countdown-number {
-      font-size: 55px;
-      line-height: 1.1;
+      font-size: clamp(43px, 7vw, 58px);
+      font-weight: 500;
+      line-height: 1.2;
     }
 
     .countdown-label {
-      font-size: 15px;
+      font-size: 19px;
       letter-spacing: 2px;
-      margin-top: 5px;
+      margin-top: 8px;
     }
 
+    /* Место встречи */
     .venue-name {
-      font-size: 50px;
-      margin: 12px 0;
+      font-size: clamp(42px, 7vw, 60px);
+      font-weight: 500;
+      margin: 15px auto;
     }
 
     .venue-address {
-      font-size: 20px;
+      font-size: 24px;
       line-height: 1.7;
     }
 
-    .map-button {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 13px 27px;
-      border: 1px solid var(--navy);
-      color: var(--navy);
-      background: rgba(255,255,255,.18);
-      text-decoration: none;
-      font-size: 16px;
-      letter-spacing: 2px;
-      transition: .25s ease;
+    .venue-arrows {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 15px auto 5px;
+      max-width: 470px;
     }
 
-    .map-button:hover {
+    .venue-arrows .line {
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+      position: relative;
+    }
+
+    .venue-arrows .line:first-child::after {
+      content: "›";
+      position: absolute;
+      right: -2px;
+      top: -17px;
+      font-size: 27px;
+    }
+
+    .venue-arrows .line:last-child::before {
+      content: "‹";
+      position: absolute;
+      left: -2px;
+      top: -17px;
+      font-size: 27px;
+    }
+
+    .venue-arrows .symbol {
+      font-size: 19px;
+    }
+
+    /* Кнопки */
+    .button {
+      display: inline-block;
+      margin: 25px auto 5px;
+      padding: 15px 30px;
+      border: 1px solid var(--navy);
+      background: rgba(255,255,255,.22);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      transition: background .3s ease, color .3s ease, transform .3s ease;
+    }
+
+    .button:hover {
       background: var(--navy);
       color: var(--blue);
+      transform: translateY(-3px);
     }
 
+    /* Дресс-код */
     .dress-text {
-      max-width: 650px;
-      margin: 0 auto 28px;
+      max-width: 680px;
+      margin: 0 auto 25px;
     }
 
     .palette {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 13px;
+      gap: 16px;
       margin: 30px auto;
     }
 
     .palette-color {
-      width: 68px;
-      height: 68px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      border: 1px solid rgba(8,26,54,.18);
-      box-shadow: 0 3px 10px rgba(8,26,54,.08);
+      border: 1px solid rgba(8,26,54,.2);
+      box-shadow: 0 4px 12px rgba(8,26,54,.09);
     }
 
-    .palette-color:nth-child(1) {
-      background: #111111;
+    .palette-color:nth-child(1) { background: #111111; }
+    .palette-color:nth-child(2) { background: #081a36; }
+    .palette-color:nth-child(3) { background: #173b67; }
+    .palette-color:nth-child(4) { background: #4f7da9; }
+    .palette-color:nth-child(5) { background: #91b5d8; }
+
+    /* Вишлист и Telegram */
+    .special-card {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 45px 30px;
+      border: 1px solid var(--line);
+      outline: 1px solid rgba(255,255,255,.32);
+      outline-offset: 5px;
+      background: rgba(255,255,255,.12);
     }
 
-    .palette-color:nth-child(2) {
-      background: #081a36;
+    .special-symbol {
+      font-size: 35px;
+      margin-bottom: 12px;
     }
 
-    .palette-color:nth-child(3) {
-      background: #173b67;
-    }
-
-    .palette-color:nth-child(4) {
-      background: #4f7da9;
-    }
-
-    .palette-color:nth-child(5) {
-      background: #91b5d8;
-    }
-
+    /* Анкета */
     .rsvp-frame {
       width: 100%;
       max-width: 680px;
@@ -285,29 +341,71 @@
       background: transparent;
     }
 
+    /* Нижний блок */
     .footer {
-      padding: 35px 20px 55px;
-      font-size: 17px;
+      padding: 40px 20px 65px;
     }
 
     .signature {
-      font-size: 58px;
-      margin-top: 10px;
+      font-size: 42px;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    /* Появление блоков при прокрутке */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Уменьшение анимации, если пользователь её отключил */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* Мобильная версия */
     @media (max-width: 600px) {
       .hero {
         min-height: 90vh;
-        padding-top: 65px;
+        padding: 65px 20px;
       }
 
       .section {
-        padding: 55px 18px;
+        padding: 40px 18px;
       }
 
-      p {
-        font-size: 17px;
+      .section-inner {
+        padding: 35px 18px;
+      }
+
+      .countdown {
+        gap: 20px 12px;
+      }
+
+      .countdown-item {
+        min-width: 70px;
+      }
+
+      .countdown-label {
+        font-size: 16px;
       }
 
       .palette-color {
@@ -315,20 +413,21 @@
         height: 54px;
       }
 
-      .countdown {
-        gap: 13px;
-      }
-
-      .countdown-item {
-        min-width: 65px;
-      }
-
-      .countdown-number {
-        font-size: 43px;
+      .button {
+        font-size: 16px;
+        padding: 14px 20px;
       }
 
       .rsvp-frame {
         height: 950px;
+      }
+
+      .special-card {
+        padding: 35px 18px;
+      }
+
+      .venue-arrows {
+        gap: 10px;
       }
     }
   </style>
@@ -336,29 +435,56 @@
 
 <body>
 
+  <!-- Декоративные звёзды -->
+  <div class="star-field" aria-hidden="true">
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+  </div>
+
+  <!-- Первый экран -->
   <header class="hero">
-    <div class="eyebrow">Приглашаем вас разделить с нами</div>
 
-    <h1>Данил и Варвара</h1>
+    <div class="eyebrow">
+      Приглашаем вас стать свидетелем свадьбы
+    </div>
 
-    <div class="hero-subtitle">Мы женимся!</div>
+    <h1>
+      Данила<br>
+      и Варвары
+    </h1>
+
+    <div class="hero-subtitle">
+      Мы женимся!
+    </div>
 
     <div class="star-divider">✧ ✦ ✧</div>
 
     <p class="intro">
       В нашей жизни начинается новая глава,
-      и мы будем счастливы провести этот особенный
-      день вместе с вами.
+      и мы хотим, чтобы вы были с нами
+      в такой важный для нас день.
     </p>
 
-    <div class="date-large">27 января 2027</div>
+    <div class="date-large">
+      27 января 2027
+    </div>
 
     <p class="time">17:00 · МОСКВА</p>
+
   </header>
 
   <main>
 
-    <section class="section">
+    <!-- Обратный отсчёт -->
+    <section class="section reveal">
       <div class="section-inner">
 
         <h2>До нашей встречи</h2>
@@ -393,12 +519,25 @@
       <div class="star-divider">✧ ✦ ✧</div>
     </section>
 
-    <section class="section">
+    <!-- Место встречи -->
+    <section class="section reveal">
       <div class="section-inner">
 
         <h2>Место встречи</h2>
 
+        <div class="venue-arrows" aria-hidden="true">
+          <span class="line"></span>
+          <span class="symbol">✧</span>
+          <span class="line"></span>
+        </div>
+
         <div class="venue-name">Ya-Loft 2</div>
+
+        <div class="venue-arrows" aria-hidden="true">
+          <span class="line"></span>
+          <span class="symbol">✦</span>
+          <span class="line"></span>
+        </div>
 
         <p class="venue-address">
           Бутырская ул., 46, стр. 3<br>
@@ -406,7 +545,7 @@
         </p>
 
         <a
-          class="map-button"
+          class="button"
           href="https://yandex.ru/maps/org/ya_loft_1_2/177029651026/"
           target="_blank"
           rel="noopener noreferrer"
@@ -419,7 +558,8 @@
       <div class="star-divider">✧ ✦ ✧</div>
     </section>
 
-    <section class="section">
+    <!-- Дресс-код -->
+    <section class="section reveal">
       <div class="section-inner">
 
         <h2>Дресс-код</h2>
@@ -447,7 +587,63 @@
       <div class="star-divider">✧ ✦ ✧</div>
     </section>
 
-    <section class="section" id="rsvp">
+    <!-- Вишлист -->
+    <section class="section reveal">
+      <div class="special-card">
+
+        <div class="special-symbol">✧</div>
+
+        <h2>Ваше присутствие — лучший подарок</h2>
+
+        <p>
+          Но если вы захотите порадовать нас подарком,
+          мы собрали наши пожелания в одном месте.
+        </p>
+
+        <a
+          class="button"
+          href="https://followish.io/mywishlist/jom0j6ggoh3f1q"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ПОСМОТРЕТЬ ВИШЛИСТ
+        </a>
+
+      </div>
+
+      <div class="star-divider">✧ ✦ ✧</div>
+    </section>
+
+    <!-- Telegram -->
+    <section class="section reveal">
+      <div class="special-card">
+
+        <div class="special-symbol">✦</div>
+
+        <h2>Остаёмся на связи</h2>
+
+        <p>
+          Мы создали Telegram-канал для наших гостей.
+          Присоединяйтесь, чтобы не пропустить важные
+          новости и детали праздника!
+        </p>
+
+        <a
+          class="button"
+          href="https://t.me/+QDaJIYAoDpQ2MjMy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ПЕРЕЙТИ В TELEGRAM
+        </a>
+
+      </div>
+
+      <div class="star-divider">✧ ✦ ✧</div>
+    </section>
+
+    <!-- Анкета гостей -->
+    <section class="section reveal" id="rsvp">
       <div class="section-inner">
 
         <h2>Вы с нами?</h2>
@@ -472,17 +668,20 @@
 
   </main>
 
-  <footer class="footer">
+  <footer class="footer reveal">
 
     <div class="star-divider">✧ ✦ ✧</div>
 
     <p>С любовью и нетерпением ждём встречи</p>
 
-    <div class="signature">Данил и Варвара</div>
+    <div class="signature">
+      Данила и Варвара
+    </div>
 
   </footer>
 
   <script>
+    // Обратный отсчёт до свадьбы
     const weddingDate = new Date(
       "2027-01-27T17:00:00+03:00"
     ).getTime();
@@ -491,11 +690,12 @@
       const now = Date.now();
       const distance = weddingDate - now;
 
+      const ids = ["days", "hours", "minutes", "seconds"];
+
       if (distance <= 0) {
-        document.getElementById("days").textContent = "0";
-        document.getElementById("hours").textContent = "0";
-        document.getElementById("minutes").textContent = "0";
-        document.getElementById("seconds").textContent = "0";
+        ids.forEach(id => {
+          document.getElementById(id).textContent = "0";
+        });
         return;
       }
 
@@ -523,6 +723,33 @@
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // Плавное появление секций при прокрутке
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries, observerInstance) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observerInstance.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+      revealElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach(element => {
+        element.classList.add("visible");
+      });
+    }
   </script>
 
 </body>
