@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -17,8 +18,6 @@
       --medium-blue: #4f7da9;
       --light-blue: #91b5d8;
       --white: #ffffff;
-      --line: rgba(8, 26, 54, 0.22);
-      --glass: rgba(255, 255, 255, 0.12);
     }
 
     * {
@@ -31,7 +30,10 @@
 
     body {
       margin: 0;
-      background: var(--background);
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(255,255,255,.25), transparent 35%),
+        radial-gradient(ellipse at 85% 65%, rgba(255,255,255,.18), transparent 38%),
+        var(--background);
       color: var(--dark);
       font-family: "Cormorant Unicase", serif;
       font-size: 21px;
@@ -39,7 +41,7 @@
       overflow-x: hidden;
     }
 
-    /* Звёздное небо */
+    /* Мерцающие звёзды */
     .star-field {
       position: fixed;
       inset: 0;
@@ -50,26 +52,26 @@
 
     .star {
       position: absolute;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255,255,255,.9);
       animation: twinkle 4s ease-in-out infinite;
-      text-shadow: 0 0 9px rgba(255, 255, 255, 0.65);
+      text-shadow: 0 0 10px rgba(255,255,255,.7);
     }
 
     .star:nth-child(1) { top: 8%; left: 9%; font-size: 25px; animation-delay: 0s; }
     .star:nth-child(2) { top: 18%; left: 83%; font-size: 17px; animation-delay: 1s; }
     .star:nth-child(3) { top: 35%; left: 5%; font-size: 14px; animation-delay: 2s; }
-    .star:nth-child(4) { top: 48%; left: 92%; font-size: 27px; animation-delay: 0.5s; }
+    .star:nth-child(4) { top: 48%; left: 92%; font-size: 27px; animation-delay: .5s; }
     .star:nth-child(5) { top: 68%; left: 12%; font-size: 19px; animation-delay: 1.5s; }
     .star:nth-child(6) { top: 78%; left: 87%; font-size: 15px; animation-delay: 2.5s; }
-    .star:nth-child(7) { top: 90%; left: 35%; font-size: 23px; animation-delay: 0.8s; }
+    .star:nth-child(7) { top: 90%; left: 35%; font-size: 23px; animation-delay: .8s; }
     .star:nth-child(8) { top: 12%; left: 52%; font-size: 13px; animation-delay: 1.8s; }
     .star:nth-child(9) { top: 58%; left: 72%; font-size: 18px; animation-delay: 3s; }
     .star:nth-child(10) { top: 30%; left: 62%; font-size: 22px; animation-delay: 2.2s; }
 
     @keyframes twinkle {
       0%, 100% {
-        opacity: 0.35;
-        transform: scale(0.8) rotate(0deg);
+        opacity: .35;
+        transform: scale(.8) rotate(0deg);
       }
       50% {
         opacity: 1;
@@ -77,8 +79,7 @@
       }
     }
 
-    main,
-    footer {
+    main, footer {
       position: relative;
       z-index: 1;
     }
@@ -88,10 +89,8 @@
       margin: 0 auto;
     }
 
-    /* Общие заголовки — Great Vibes */
-    h1,
-    h2,
-    h3,
+    /* Great Vibes для декоративных заголовков */
+    h1, h2, h3,
     .hero-subtitle,
     .date-large,
     .venue-name,
@@ -102,6 +101,7 @@
       line-height: 1.15;
     }
 
+    /* Первый экран */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -133,7 +133,19 @@
 
     .hero-subtitle {
       font-size: clamp(48px, 8vw, 72px);
-      margin: 5px 0 35px;
+      margin: 5px 0 12px;
+    }
+
+    /* Три звёздочки друг под другом */
+    .hero-stars {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      line-height: 1.1;
+      margin: 5px auto 28px;
+      text-shadow: 0 0 10px rgba(255,255,255,.7);
     }
 
     .hero-intro {
@@ -152,29 +164,85 @@
       font-size: 20px;
       letter-spacing: 3px;
       font-weight: 600;
-      margin-top: 0;
+      margin: 0;
     }
 
-    /* Разделитель */
-    .divider {
+    /* Заголовок таймера — Cormorant Unicase */
+    .countdown-section {
       text-align: center;
-      color: var(--white);
-      font-size: 27px;
-      letter-spacing: 13px;
-      line-height: 1;
-      margin: 25px 0;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      padding: 15px 20px 55px;
     }
 
-    /* Секции */
+    .countdown-title {
+      font-family: "Cormorant Unicase", serif !important;
+      font-size: clamp(24px, 4vw, 31px);
+      font-weight: 500;
+      line-height: 1.4;
+      margin: 0 0 22px;
+      letter-spacing: 1px;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .countdown-item {
+      padding: 12px 5px;
+      background: rgba(255,255,255,.13);
+      border-radius: 18px;
+    }
+
+    .countdown-number {
+      display: block;
+      font-size: clamp(54px, 8vw, 74px);
+      line-height: 1.1;
+    }
+
+    .countdown-label {
+      display: block;
+      font-family: "Cormorant Unicase", serif;
+      font-size: 15px;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* Разделитель: тонкие линии и звезда в центре */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      width: min(700px, 75%);
+      margin: 15px auto;
+      color: white;
+      font-size: 19px;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(255,255,255,.8);
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.75);
+    }
+
+    .divider span {
+      display: inline-block;
+    }
+
+    /* Секции без рамок и квадратных карточек */
     .section {
       padding: 65px 25px;
-      margin: 0 auto 28px;
       text-align: center;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      background: var(--glass);
-      box-shadow: 0 8px 30px rgba(8, 26, 54, 0.035);
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
 
     .section h2 {
@@ -187,34 +255,6 @@
       margin: 0 auto 25px;
       font-size: clamp(20px, 3vw, 24px);
       line-height: 1.75;
-    }
-
-    /* Таймер */
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      max-width: 700px;
-      margin: 35px auto 0;
-    }
-
-    .countdown-item {
-      padding: 15px 5px;
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      background: rgba(255, 255, 255, 0.13);
-    }
-
-    .countdown-number {
-      display: block;
-      font-size: clamp(54px, 8vw, 74px);
-      line-height: 1.1;
-    }
-
-    .countdown-label {
-      display: block;
-      font-size: 15px;
-      letter-spacing: 1px;
-      font-weight: 600;
     }
 
     /* Место встречи */
@@ -232,7 +272,7 @@
       height: 1px;
       background: var(--dark);
       position: relative;
-      opacity: 0.7;
+      opacity: .7;
     }
 
     .venue-line.left::after {
@@ -275,6 +315,7 @@
       display: inline-block;
       padding: 13px 28px;
       border: 1px solid var(--dark);
+      border-radius: 3px;
       background: var(--dark);
       color: var(--white);
       font-family: "Cormorant Unicase", serif;
@@ -282,14 +323,15 @@
       font-weight: 700;
       letter-spacing: 1.3px;
       text-decoration: none;
-      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform .3s ease, background .3s ease,
+                  color .3s ease, box-shadow .3s ease;
     }
 
     .button:hover {
       background: transparent;
       color: var(--dark);
       transform: translateY(-4px);
-      box-shadow: 0 7px 18px rgba(8, 26, 54, 0.12);
+      box-shadow: 0 7px 18px rgba(8,26,54,.12);
     }
 
     /* Дресс-код */
@@ -299,15 +341,15 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 17px;
-      margin: 35px auto 15px;
+      margin: 35px auto 25px;
     }
 
     .color-circle {
       width: 67px;
       height: 67px;
       border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.75);
-      box-shadow: 0 3px 12px rgba(8, 26, 54, 0.12);
+      border: 2px solid rgba(255,255,255,.75);
+      box-shadow: 0 3px 12px rgba(8,26,54,.12);
     }
 
     .color-1 { background: #111111; }
@@ -316,14 +358,33 @@
     .color-4 { background: #4f7da9; }
     .color-5 { background: #91b5d8; }
 
+    .dress-note {
+      max-width: 650px;
+      margin: 28px auto 0;
+      font-size: clamp(19px, 3vw, 23px);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* Вишлист */
+    .wishlist-section .section-text {
+      margin-bottom: 28px;
+    }
+
+    /* Telegram */
+    .telegram-section .section-text {
+      max-width: 720px;
+    }
+
     /* Анкета */
     .form-frame {
       width: 100%;
       max-width: 650px;
       min-height: 650px;
       margin: 30px auto 0;
-      border: 1px solid rgba(8, 26, 54, 0.18);
-      background: rgba(255, 255, 255, 0.25);
+      overflow: hidden;
+      border-radius: 14px;
+      background: rgba(255,255,255,.2);
     }
 
     .form-frame iframe {
@@ -334,7 +395,14 @@
       background: transparent;
     }
 
-    /* Финальная подпись */
+    .form-note {
+      max-width: 680px;
+      margin: 28px auto 0;
+      font-size: clamp(19px, 3vw, 23px);
+      line-height: 1.75;
+    }
+
+    /* Нижняя подпись */
     footer {
       text-align: center;
       padding: 65px 20px 85px;
@@ -350,11 +418,11 @@
       margin: 0;
     }
 
-    /* Анимация появления при прокрутке */
+    /* Появление блоков при прокрутке */
     .reveal {
       opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
     }
 
     .reveal.visible {
@@ -366,10 +434,10 @@
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: .01ms !important;
       }
 
       .reveal {
@@ -384,13 +452,12 @@
       }
 
       .hero {
-        min-height: 92vh;
+        min-height: 95vh;
         padding: 65px 15px;
       }
 
-      .section {
-        padding: 48px 17px;
-        margin-bottom: 18px;
+      .countdown-section {
+        padding: 10px 12px 45px;
       }
 
       .countdown {
@@ -398,12 +465,17 @@
       }
 
       .countdown-item {
-        padding: 12px 2px;
+        padding: 10px 2px;
+        border-radius: 12px;
       }
 
       .countdown-label {
         font-size: 11px;
-        letter-spacing: 0.5px;
+        letter-spacing: .5px;
+      }
+
+      .section {
+        padding: 48px 17px;
       }
 
       .venue-decoration {
@@ -428,6 +500,11 @@
       .form-frame,
       .form-frame iframe {
         min-height: 700px;
+      }
+
+      .divider {
+        width: 72%;
+        gap: 13px;
       }
     }
   </style>
@@ -462,6 +539,12 @@
 
         <p class="hero-subtitle">Мы женимся!</p>
 
+        <div class="hero-stars" aria-hidden="true">
+          <span>✦</span>
+          <span>✦</span>
+          <span>✦</span>
+        </div>
+
         <p class="hero-intro">
           В нашей жизни начинается новая глава, и мы хотим,
           чтобы вы были с нами в такой важный для нас день.
@@ -473,11 +556,9 @@
       </div>
     </header>
 
-    <div class="divider">✦ ✦ ✦</div>
-
     <!-- Таймер -->
-    <section class="container section reveal">
-      <h2>До нашей встречи</h2>
+    <section class="countdown-section reveal">
+      <h2 class="countdown-title">До нашей встречи</h2>
 
       <div class="countdown">
         <div class="countdown-item">
@@ -502,7 +583,7 @@
       </div>
     </section>
 
-    <div class="divider">✦ ✦ ✦</div>
+    <div class="divider"><span>✦</span></div>
 
     <!-- Место встречи -->
     <section class="container section reveal">
@@ -528,7 +609,7 @@
       </a>
     </section>
 
-    <div class="divider">✦ ✦ ✦</div>
+    <div class="divider"><span>✦</span></div>
 
     <!-- Дресс-код -->
     <section class="container section reveal">
@@ -546,12 +627,19 @@
         <div class="color-circle color-4" title="Голубой"></div>
         <div class="color-circle color-5" title="Светло-голубой"></div>
       </div>
+
+      <p class="dress-note">
+        Но особенно приятно нам будет, если<br>
+        вы исключите из своего образа белый<br>
+        и красный цвета (не считая цвета<br>
+        рубашек).
+      </p>
     </section>
 
-    <div class="divider">✦ ✦ ✦</div>
+    <div class="divider"><span>✦</span></div>
 
     <!-- Вишлист -->
-    <section class="container section reveal">
+    <section class="container section wishlist-section reveal">
       <h2>Наш вишлист</h2>
 
       <p class="section-text">
@@ -569,15 +657,16 @@
       </a>
     </section>
 
-    <div class="divider">✦ ✦ ✦</div>
+    <div class="divider"><span>✦</span></div>
 
     <!-- Telegram -->
-    <section class="container section reveal">
+    <section class="container section telegram-section reveal">
       <h2>Будем на связи</h2>
 
       <p class="section-text">
-        Присоединяйтесь к нашему Telegram-каналу.
-        Там мы будем делиться новостями и важной информацией о празднике.
+        Присоединяйтесь к нашему Telegram-каналу, чтобы нам было удобно вам сообщать детали.
+        Тем, у кого в паспорте год рождения меньше 1990 года, делать это не обязательно,
+        вас мы будем держать в курсе отдельно)
       </p>
 
       <a
@@ -590,9 +679,9 @@
       </a>
     </section>
 
-    <div class="divider">✦ ✦ ✦</div>
+    <div class="divider"><span>✦</span></div>
 
-    <!-- RSVP -->
+    <!-- Анкета -->
     <section class="container section reveal">
       <h2>Подтвердите участие</h2>
 
@@ -610,11 +699,18 @@
           Загрузка анкеты…
         </iframe>
       </div>
+
+      <p class="form-note">
+        Дорогие гости! Пожалуйста, заполните анкету до 1 декабря 2026 года,
+        чтобы мы могли подготовить всё для вашего комфорта ❤️
+        <br>
+        Заполняйте анкету на каждого гостя по отдельности.
+      </p>
     </section>
 
   </main>
 
-  <!-- Самая нижняя подпись -->
+  <!-- Нижняя подпись -->
   <footer class="reveal">
     <p class="footer-text">С любовью и нетерпением ждём встречи,</p>
     <p class="signature">Ваши Варвара и Данил</p>
@@ -660,9 +756,7 @@
           }
         });
       },
-      {
-        threshold: 0.12
-      }
+      { threshold: 0.12 }
     );
 
     document.querySelectorAll(".reveal").forEach(element => {
