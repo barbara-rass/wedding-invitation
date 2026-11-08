@@ -4,28 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#91b5d8">
-
-  <title>Данил & Варвара — свадебное приглашение</title>
+  <title>Данил и Варвара — свадебное приглашение</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comforter&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root {
+      --blue: #a9c7e2;
       --navy: #081a36;
-      --blue: #173b67;
+      --black: #111111;
+      --dark-blue: #173b67;
       --mid-blue: #4f7da9;
       --light-blue: #91b5d8;
-      --silver: #dce8f3;
-      --background: #a9c7e2;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -33,320 +29,267 @@
     }
 
     body {
-      font-family: "Manrope", Arial, sans-serif;
+      margin: 0;
+      background: var(--blue);
       color: var(--navy);
-      background: var(--background);
-      line-height: 1.8;
-      position: relative;
+      font-family: "Cormorant Unicase", serif;
+      font-weight: 400;
+      text-align: center;
       overflow-x: hidden;
+      isolation: isolate;
     }
 
-    /* Звёздное небо на всём сайте */
-
     body::before {
+      content: "✦      ✧          ✦       ✧          ✦";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      color: rgba(255,255,255,0.65);
+      font-size: 19px;
+      letter-spacing: 35px;
+      line-height: 115px;
+      overflow: hidden;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      padding: 15px;
+    }
+
+    body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background-image:
-        radial-gradient(2px 2px at 10% 15%, rgba(255,255,255,.9) 50%, transparent 100%),
-        radial-gradient(2px 2px at 25% 75%, rgba(255,255,255,.8) 50%, transparent 100%),
-        radial-gradient(3px 3px at 45% 35%, rgba(255,255,255,.75) 50%, transparent 100%),
-        radial-gradient(2px 2px at 65% 85%, rgba(255,255,255,.9) 50%, transparent 100%),
-        radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.8) 50%, transparent 100%),
-        radial-gradient(3px 3px at 92% 55%, rgba(255,255,255,.8) 50%, transparent 100%),
-        radial-gradient(1px 1px at 35% 55%, var(--navy) 50%, transparent 100%),
-        radial-gradient(1px 1px at 72% 40%, var(--navy) 50%, transparent 100%);
-      background-size: 310px 280px;
-      opacity: .75;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,.45) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 12%, rgba(255,255,255,.5) 0 1px, transparent 2px),
+        radial-gradient(circle at 75% 62%, rgba(255,255,255,.4) 0 1px, transparent 2px),
+        radial-gradient(circle at 20% 78%, rgba(255,255,255,.4) 0 1px, transparent 2px);
+      background-size: 170px 190px, 230px 210px, 190px 220px, 250px 230px;
     }
-
-    /* Все заголовки — Comforter */
 
     h1, h2, h3,
     .eyebrow,
     .venue-name,
     .signature,
-    .hero-subtitle {
-      font-family: "Comforter", cursive;
+    .hero-subtitle,
+    .date-large,
+    .countdown-number {
+      font-family: "Great Vibes", cursive;
       font-weight: 400;
       color: var(--navy);
     }
 
-    .hero {
-      min-height: 100vh;
-      padding: 80px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-content {
-      max-width: 900px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      font-size: 32px;
-      line-height: 1.3;
-      margin-bottom: 22px;
-    }
-
-    .names {
-      font-size: clamp(76px, 15vw, 150px);
-      line-height: 1.25;
-      margin-bottom: 15px;
-      text-shadow: 0 3px 15px rgba(255,255,255,.35);
-    }
-
-    .hero-subtitle {
-      font-size: clamp(30px, 5vw, 46px);
-      margin-top: 18px;
-    }
-
-    .hero-date {
-      font-size: 14px;
-      letter-spacing: 5px;
-      margin-top: 35px;
-      color: var(--navy);
-    }
-
-    .ornament {
-      width: 150px;
-      height: 1px;
-      background: var(--navy);
-      opacity: .45;
-      margin: 30px auto;
-      position: relative;
-    }
-
-    .ornament::before,
-    .ornament::after {
-      content: "✧";
-      position: absolute;
-      top: -17px;
-      font-size: 23px;
-      color: var(--navy);
-    }
-
-    .ornament::before {
-      left: -20px;
-    }
-
-    .ornament::after {
-      right: -20px;
-    }
-
-    .section {
-      padding: 85px 22px;
-      text-align: center;
-      position: relative;
+    h1 {
+      font-size: clamp(64px, 12vw, 112px);
+      line-height: 1.15;
+      margin: 12px 0;
     }
 
     h2 {
-      font-size: clamp(52px, 9vw, 82px);
+      font-size: clamp(48px, 8vw, 72px);
       line-height: 1.2;
-      margin-bottom: 25px;
+      margin: 0 0 22px;
     }
 
-    .section p {
+    h3 {
+      font-size: 42px;
+      margin: 12px 0;
+    }
+
+    p {
+      font-size: 19px;
+      line-height: 1.8;
+      margin: 10px auto;
       max-width: 650px;
-      margin: 0 auto 18px;
-      color: var(--navy);
-      font-size: 15px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 90px 20px 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(34px, 6vw, 48px);
+      margin-top: 12px;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 20px auto 0;
+      font-size: 20px;
     }
 
     .star-divider {
-      font-size: 27px;
-      letter-spacing: 15px;
+      margin: 28px auto;
       color: var(--navy);
-      margin: 30px auto;
-      opacity: .75;
+      font-size: 25px;
+      letter-spacing: 12px;
+    }
+
+    .section {
+      padding: 75px 20px;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 850px;
+      margin: 0 auto;
     }
 
     .date-large {
-      font-family: "Comforter", cursive;
-      font-size: clamp(48px, 8vw, 75px);
-      color: var(--navy);
-      margin: 25px 0 5px;
+      font-size: clamp(54px, 10vw, 82px);
+      margin: 10px 0;
     }
 
     .time {
-      color: var(--navy);
-      font-size: 13px;
+      font-size: 25px;
       letter-spacing: 3px;
+      margin-top: 0;
     }
-
-    /* Обратный отсчёт */
 
     .countdown {
       display: flex;
       justify-content: center;
-      gap: clamp(15px, 4vw, 40px);
-      margin: 40px auto 0;
       flex-wrap: wrap;
+      gap: 24px;
+      margin: 35px auto 0;
     }
 
     .countdown-item {
-      min-width: 65px;
+      min-width: 85px;
     }
 
     .countdown-number {
-      font-family: "Comforter", cursive;
-      font-size: 58px;
-      color: var(--navy);
+      font-size: 55px;
       line-height: 1.1;
     }
 
     .countdown-label {
-      font-size: 10px;
+      font-size: 15px;
       letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--navy);
-    }
-
-    /* Место проведения */
-
-    .venue-card {
-      max-width: 620px;
-      margin: 35px auto 0;
-      padding: 40px 25px;
-      border: 1px solid rgba(8,26,54,.3);
-      background: rgba(255,255,255,.16);
-      position: relative;
+      margin-top: 5px;
     }
 
     .venue-name {
-      font-size: 55px;
-      margin-bottom: 12px;
+      font-size: 50px;
+      margin: 12px 0;
     }
 
     .venue-address {
-      font-size: 14px;
-      color: var(--navy);
-      margin-bottom: 25px;
+      font-size: 20px;
+      line-height: 1.7;
     }
 
-    .button {
+    .map-button {
       display: inline-block;
-      padding: 13px 25px;
-      background: var(--mid-blue);
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
+      margin-top: 25px;
+      padding: 13px 27px;
       border: 1px solid var(--navy);
-      transition: .2s ease;
+      color: var(--navy);
+      background: rgba(255,255,255,.18);
+      text-decoration: none;
+      font-family: "Cormorant Unicase", serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      transition: .25s ease;
     }
 
-    .button:hover {
-      background: var(--light-blue);
-      transform: translateY(-2px);
+    .map-button:hover {
+      background: var(--navy);
+      color: var(--blue);
     }
 
-    /* Дресс-код */
-
-    .dress-code-text {
-      margin-bottom: 30px;
+    .dress-text {
+      max-width: 650px;
+      margin: 0 auto 28px;
     }
 
     .palette {
       display: flex;
       justify-content: center;
-      gap: 13px;
       flex-wrap: wrap;
-      margin: 35px auto 20px;
+      gap: 13px;
+      margin: 30px auto;
     }
 
-    .swatch {
-      width: 62px;
-      height: 62px;
+    .palette-color {
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-      border: 2px solid rgba(8,26,54,.25);
-      box-shadow: 0 3px 12px rgba(8,26,54,.12);
+      border: 1px solid rgba(8,26,54,.18);
+      box-shadow: 0 3px 10px rgba(8,26,54,.08);
     }
 
-    .palette-note {
-      color: var(--navy);
-      font-size: 12px;
-      margin-top: 20px;
-    }
+    .palette-color:nth-child(1) { background: #111111; }
+    .palette-color:nth-child(2) { background: #081a36; }
+    .palette-color:nth-child(3) { background: #173b67; }
+    .palette-color:nth-child(4) { background: #4f7da9; }
+    .palette-color:nth-child(5) { background: #91b5d8; }
 
-    /* Анкета */
-
-    .form-area {
-      max-width: 760px;
-      margin: 35px auto 0;
-      padding: 12px;
-      background: rgba(255,255,255,.2);
-      border: 1px solid rgba(8,26,54,.25);
-    }
-
-    .form-frame {
+    .rsvp-frame {
       width: 100%;
-      min-height: 950px;
-      border: 0;
+      max-width: 680px;
+      height: 850px;
+      border: none;
+      margin: 20px auto 0;
       display: block;
       background: transparent;
     }
 
-    /* Завершение сайта */
-
-    footer {
-      padding: 55px 20px 65px;
-      text-align: center;
-      color: var(--navy);
-      background: transparent;
+    .footer {
+      padding: 35px 20px 55px;
+      font-size: 17px;
     }
 
     .signature {
-      font-size: clamp(55px, 10vw, 85px);
-      line-height: 1.4;
-      margin: 20px auto;
-    }
-
-    footer p {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--navy);
-    }
-
-    .footer-stars {
-      font-size: 28px;
-      letter-spacing: 15px;
-      margin-bottom: 20px;
+      font-size: 58px;
+      margin-top: 10px;
     }
 
     @media (max-width: 600px) {
-      .section {
-        padding: 65px 20px;
-      }
-
       .hero {
         min-height: 90vh;
+        padding-top: 65px;
       }
 
-      .names {
-        font-size: clamp(68px, 17vw, 100px);
+      .section {
+        padding: 55px 18px;
       }
 
-      .swatch {
-        width: 49px;
-        height: 49px;
+      p {
+        font-size: 17px;
       }
 
-      .form-area {
-        padding: 5px;
+      .palette-color {
+        width: 54px;
+        height: 54px;
       }
 
-      .eyebrow {
-        font-size: 27px;
+      .countdown {
+        gap: 13px;
+      }
+
+      .countdown-item {
+        min-width: 65px;
+      }
+
+      .countdown-number {
+        font-size: 43px;
+      }
+
+      .rsvp-frame {
+        height: 950px;
       }
     }
   </style>
@@ -355,167 +298,130 @@
 <body>
 
   <header class="hero">
-    <div class="hero-content">
-
-      <div class="eyebrow">Приглашение на свадьбу</div>
-
-      <h1 class="names">Данил &amp; Варвара</h1>
-
-      <div class="ornament"></div>
-
-      <p class="hero-subtitle">
-        Будем счастливы разделить этот день с вами
-      </p>
-
-      <div class="hero-date">27 · 01 · 2027</div>
-
-    </div>
-  </header>
-
-  <section class="section" id="invitation">
-
-    <div class="eyebrow">Дорогие близкие</div>
-
-    <h2>Мы женимся!</h2>
-
-    <p>
-      В нашей жизни начинается новая глава, и мы хотим,
-      чтобы вы стали частью этого особенного дня.
-    </p>
-
-    <p>
-      Приглашаем вас разделить с нами радость,
-      любовь и самые тёплые моменты.
-    </p>
+    <div class="eyebrow">Приглашаем вас разделить с нами</div>
+    <h1>Данил и Варвара</h1>
+    <div class="hero-subtitle">Мы женимся!</div>
 
     <div class="star-divider">✧ ✦ ✧</div>
+
+    <p class="intro">
+      В нашей жизни начинается новая глава,
+      и мы будем счастливы провести этот особенный
+      день вместе с вами.
+    </p>
 
     <div class="date-large">27 января 2027</div>
+    <p class="time">17:00 · МОСКВА</p>
+  </header>
 
-    <div class="time">
-      НАЧАЛО В 17:00 · МОСКОВСКОЕ ВРЕМЯ
-    </div>
+  <main>
 
-    <div class="countdown" aria-label="Обратный отсчёт">
+    <section class="section">
+      <div class="section-inner">
+        <h2>До нашей встречи</h2>
+        <p>С нетерпением ждём этот день!</p>
 
-      <div class="countdown-item">
-        <div class="countdown-number" id="days">—</div>
-        <div class="countdown-label">Дней</div>
+        <div class="countdown">
+          <div class="countdown-item">
+            <div class="countdown-number" id="days">—</div>
+            <div class="countdown-label">ДНЕЙ</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="hours">—</div>
+            <div class="countdown-label">ЧАСОВ</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="minutes">—</div>
+            <div class="countdown-label">МИНУТ</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="seconds">—</div>
+            <div class="countdown-label">СЕКУНД</div>
+          </div>
+        </div>
       </div>
+      <div class="star-divider">✧ ✦ ✧</div>
+    </section>
 
-      <div class="countdown-item">
-        <div class="countdown-number" id="hours">—</div>
-        <div class="countdown-label">Часов</div>
+    <section class="section">
+      <div class="section-inner">
+        <h2>Место встречи</h2>
+
+        <div class="venue-name">Ya-Loft 2</div>
+
+        <p class="venue-address">
+          Бутырская ул., 46, стр. 3<br>
+          Москва
+        </p>
+
+        <a
+          class="map-button"
+          href="https://yandex.ru/maps/org/ya_loft_1_2/177029651026/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ПОСМОТРЕТЬ НА КАРТЕ
+        </a>
       </div>
+      <div class="star-divider">✧ ✦ ✧</div>
+    </section>
 
-      <div class="countdown-item">
-        <div class="countdown-number" id="minutes">—</div>
-        <div class="countdown-label">Минут</div>
+    <section class="section">
+      <div class="section-inner">
+        <h2>Дресс-код</h2>
+
+        <p class="dress-text">
+          Будем рады, если вы поддержите цветовую палитру
+          нашего праздника. Выбирайте близкие вам оттенки
+          из этой гаммы.
+        </p>
+
+        <div class="palette" aria-label="Цветовая палитра">
+          <div class="palette-color" title="Чёрный"></div>
+          <div class="palette-color" title="Тёмно-синий"></div>
+          <div class="palette-color" title="Синий"></div>
+          <div class="palette-color" title="Голубой"></div>
+          <div class="palette-color" title="Светло-голубой"></div>
+        </div>
+
+        <p>
+          Главное — ваш комфорт и хорошее настроение!
+        </p>
       </div>
+      <div class="star-divider">✧ ✦ ✧</div>
+    </section>
 
-      <div class="countdown-item">
-        <div class="countdown-number" id="seconds">—</div>
-        <div class="countdown-label">Секунд</div>
+    <section class="section" id="rsvp">
+      <div class="section-inner">
+        <h2>Вы с нами?</h2>
+
+        <p>
+          Пожалуйста, заполните небольшую анкету,
+          чтобы мы могли подготовиться к встрече
+          и сделать этот день особенным для каждого.
+        </p>
+
+        <iframe
+          class="rsvp-frame"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdADz4cZLm0tWEi8jKanoVWRudTktpIQwK4EHavtIgmLrYI3g/viewform?embedded=true"
+          loading="lazy"
+          title="Анкета гостей"
+        >
+          Загрузка…
+        </iframe>
       </div>
+    </section>
 
-    </div>
-  </section>
+  </main>
 
-  <section class="section" id="details">
-
-    <div class="eyebrow">Где мы встретимся</div>
-
-    <h2>Место встречи</h2>
-
-    <div class="venue-card">
-
-      <div class="venue-name">Ya-Loft 2</div>
-
-      <p class="venue-address">
-        Бутырская ул., 46, стр. 3, Москва
-      </p>
-
-      <a
-        class="button"
-        href="https://yandex.ru/maps/org/ya_loft_1_2/177029651026/"
-        target="_blank"
-        rel="noopener noreferrer">
-        ПОСМОТРЕТЬ НА КАРТЕ
-      </a>
-
-    </div>
-
-  </section>
-
-  <section class="section" id="dresscode">
-
-    <div class="eyebrow">Дресс-код</div>
-
-    <h2>Цвета нашего дня</h2>
-
-    <p class="dress-code-text">
-      Будем рады, если в ваших образах появятся оттенки
-      нашей палитры. Выбирайте тот, который вам ближе.
-    </p>
-
-    <div class="palette" aria-label="Цветовая палитра дресс-кода">
-
-      <span class="swatch" style="background:#111111"></span>
-      <span class="swatch" style="background:#081a36"></span>
-      <span class="swatch" style="background:#173b67"></span>
-      <span class="swatch" style="background:#4f7da9"></span>
-      <span class="swatch" style="background:#91b5d8"></span>
-
-    </div>
-
-    <p class="palette-note">
-      Чёрный · Тёмно-синий · Синий · Голубой · Светло-голубой
-    </p>
-
+  <footer class="footer">
     <div class="star-divider">✧ ✦ ✧</div>
-
-  </section>
-
-  <section class="section" id="rsvp">
-
-    <div class="eyebrow">Пожалуйста, ответьте</div>
-
-    <h2>Вы с нами?</h2>
-
-    <p>
-      Пожалуйста, заполните небольшую анкету,
-      чтобы мы могли подготовить всё для вашего комфорта.
-    </p>
-
-    <div class="form-area">
-
-      <iframe
-        class="form-frame"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdADz4cZLm0tWEi8jKanoVWRudTktpIQwK4EHavtIgmLrYI3g/viewform?embedded=true"
-        title="Анкета гостей свадьбы Данила и Варвары"
-        loading="lazy">
-        Загрузка анкеты…
-      </iframe>
-
-    </div>
-
-  </section>
-
-  <footer>
-
-    <div class="footer-stars">✧ ✦ ✧</div>
-
-    <p>С ЛЮБОВЬЮ И НЕТЕРПЕНИЕМ ЖДЁМ ВАС</p>
-
-    <div class="signature">Данил &amp; Варвара</div>
-
-    <p>27 · 01 · 2027</p>
-
+    <p>С любовью и нетерпением ждём встречи</p>
+    <div class="signature">Данил и Варвара</div>
   </footer>
 
   <script>
-    const weddingDate =
-      new Date("2027-01-27T17:00:00+03:00").getTime();
+    const weddingDate = new Date("2027-01-27T17:00:00+03:00").getTime();
 
     function updateCountdown() {
       const now = Date.now();
@@ -529,21 +435,10 @@
         return;
       }
 
-      const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-      );
-
-      const hours = Math.floor(
-        (distance / (1000 * 60 * 60)) % 24
-      );
-
-      const minutes = Math.floor(
-        (distance / (1000 * 60)) % 60
-      );
-
-      const seconds = Math.floor(
-        (distance / 1000) % 60
-      );
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
 
       document.getElementById("days").textContent = days;
       document.getElementById("hours").textContent = hours;
