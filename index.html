@@ -36,12 +36,12 @@
         var(--background);
       color: var(--dark);
       font-family: "Cormorant Unicase", serif;
-      font-size: 21px;
-      line-height: 1.7;
+      font-size: 26px;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
-    /* Мерцающие звёзды */
+    /* Мерцающие звёзды на фоне */
     .star-field {
       position: fixed;
       inset: 0;
@@ -57,7 +57,7 @@
       text-shadow: 0 0 10px rgba(255,255,255,.7);
     }
 
-    .star:nth-child(1) { top: 8%; left: 9%; font-size: 25px; animation-delay: 0s; }
+    .star:nth-child(1) { top: 8%; left: 9%; font-size: 25px; }
     .star:nth-child(2) { top: 18%; left: 83%; font-size: 17px; animation-delay: 1s; }
     .star:nth-child(3) { top: 35%; left: 5%; font-size: 14px; animation-delay: 2s; }
     .star:nth-child(4) { top: 48%; left: 92%; font-size: 27px; animation-delay: .5s; }
@@ -89,7 +89,7 @@
       margin: 0 auto;
     }
 
-    /* Great Vibes для декоративных заголовков */
+    /* Декоративные заголовки */
     h1, h2, h3,
     .hero-subtitle,
     .date-large,
@@ -118,7 +118,7 @@
 
     .eyebrow {
       font-family: "Cormorant Unicase", serif;
-      font-size: clamp(23px, 4vw, 30px);
+      font-size: 26px;
       font-weight: 500;
       line-height: 1.5;
       letter-spacing: 1px;
@@ -136,13 +136,12 @@
       margin: 5px 0 12px;
     }
 
-    /* Три звёздочки друг под другом */
     .hero-stars {
       display: flex;
       flex-direction: column;
       align-items: center;
       color: white;
-      font-size: 20px;
+      font-size: 26px;
       line-height: 1.1;
       margin: 5px auto 28px;
       text-shadow: 0 0 10px rgba(255,255,255,.7);
@@ -151,23 +150,72 @@
     .hero-intro {
       max-width: 690px;
       margin: 0 auto;
-      font-size: clamp(21px, 3vw, 25px);
-      line-height: 1.7;
+      font-size: 26px;
+      line-height: 1.65;
+    }
+
+    /* Дата с неоновым свечением и бликом */
+    .date-wrap {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      margin-top: 35px;
+      padding: 5px 12px 9px;
     }
 
     .date-large {
+      position: relative;
+      z-index: 1;
       font-size: clamp(60px, 10vw, 92px);
-      margin: 35px 0 0;
+      margin: 0;
+      color: var(--dark);
+      text-shadow:
+        0 0 3px #fff,
+        0 0 9px rgba(255,255,255,.95),
+        0 0 20px rgba(255,255,255,.75),
+        0 0 34px rgba(255,255,255,.45);
+    }
+
+    .date-wrap::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: -30%;
+      bottom: -30%;
+      left: -60%;
+      width: 35%;
+      transform: skewX(-22deg);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.2),
+        rgba(255,255,255,1),
+        rgba(255,255,255,.25),
+        transparent
+      );
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .date-wrap.shine::after {
+      animation: dateShine 1.8s ease-in-out .2s 1 forwards;
+    }
+
+    @keyframes dateShine {
+      0% { left: -60%; opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { left: 130%; opacity: 0; }
     }
 
     .date-time {
-      font-size: 20px;
+      font-size: 26px;
       letter-spacing: 3px;
       font-weight: 600;
       margin: 0;
     }
 
-    /* Заголовок таймера — Cormorant Unicase */
+    /* Таймер */
     .countdown-section {
       text-align: center;
       padding: 15px 20px 55px;
@@ -175,7 +223,7 @@
 
     .countdown-title {
       font-family: "Cormorant Unicase", serif !important;
-      font-size: clamp(24px, 4vw, 31px);
+      font-size: 26px;
       font-weight: 500;
       line-height: 1.4;
       margin: 0 0 22px;
@@ -205,12 +253,12 @@
     .countdown-label {
       display: block;
       font-family: "Cormorant Unicase", serif;
-      font-size: 15px;
+      font-size: 26px;
       letter-spacing: 1px;
       font-weight: 600;
     }
 
-    /* Разделитель: тонкие линии и звезда в центре */
+    /* Линия со звёздочкой */
     .divider {
       display: flex;
       align-items: center;
@@ -219,7 +267,7 @@
       width: min(700px, 75%);
       margin: 15px auto;
       color: white;
-      font-size: 19px;
+      font-size: 26px;
       line-height: 1;
       text-shadow: 0 0 10px rgba(255,255,255,.8);
     }
@@ -232,11 +280,7 @@
       background: rgba(255,255,255,.75);
     }
 
-    .divider span {
-      display: inline-block;
-    }
-
-    /* Секции без рамок и квадратных карточек */
+    /* Секции без рамок */
     .section {
       padding: 65px 25px;
       text-align: center;
@@ -251,10 +295,10 @@
     }
 
     .section-text {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 25px;
-      font-size: clamp(20px, 3vw, 24px);
-      line-height: 1.75;
+      font-size: 26px;
+      line-height: 1.65;
     }
 
     /* Место встречи */
@@ -306,7 +350,7 @@
     }
 
     .address {
-      font-size: 21px;
+      font-size: 26px;
       margin: 15px auto 25px;
     }
 
@@ -319,9 +363,10 @@
       background: var(--dark);
       color: var(--white);
       font-family: "Cormorant Unicase", serif;
-      font-size: 17px;
+      font-size: 26px;
       font-weight: 700;
       letter-spacing: 1.3px;
+      line-height: 1.35;
       text-decoration: none;
       transition: transform .3s ease, background .3s ease,
                   color .3s ease, box-shadow .3s ease;
@@ -334,19 +379,20 @@
       box-shadow: 0 7px 18px rgba(8,26,54,.12);
     }
 
-    /* Дресс-код */
+    /* Палитра */
     .palette {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       gap: 17px;
-      margin: 35px auto 25px;
+      margin: 35px auto 15px;
     }
 
     .color-circle {
       width: 67px;
       height: 67px;
+      flex: 0 0 67px;
       border-radius: 50%;
       border: 2px solid rgba(255,255,255,.75);
       box-shadow: 0 3px 12px rgba(8,26,54,.12);
@@ -358,22 +404,32 @@
     .color-4 { background: #4f7da9; }
     .color-5 { background: #91b5d8; }
 
-    .dress-note {
-      max-width: 650px;
-      margin: 28px auto 0;
-      font-size: clamp(19px, 3vw, 23px);
-      line-height: 1.7;
-      font-weight: 500;
+    /* Статичные мелкие пайетки */
+    .color-silver {
+      background-color: #c5c9d0;
+      background-image:
+        radial-gradient(circle at 12% 18%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 35% 12%, #777e8b 0 1px, transparent 2px),
+        radial-gradient(circle at 65% 20%, #fff 0 1.5px, transparent 2.5px),
+        radial-gradient(circle at 85% 12%, #9299a5 0 1px, transparent 2px),
+        radial-gradient(circle at 20% 48%, #858c98 0 1px, transparent 2px),
+        radial-gradient(circle at 48% 42%, #fff 0 1.5px, transparent 2.5px),
+        radial-gradient(circle at 78% 48%, #f8f9fb 0 1px, transparent 2px),
+        radial-gradient(circle at 10% 78%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 40% 82%, #858c98 0 1px, transparent 2px),
+        radial-gradient(circle at 68% 78%, #fff 0 1.5px, transparent 2.5px),
+        radial-gradient(circle at 92% 88%, #858c98 0 1px, transparent 2px),
+        linear-gradient(135deg, #e9ebef, #a4a9b3 45%, #f5f6f8 70%, #9da3ad);
+      background-size: 100% 100%;
+      box-shadow:
+        0 3px 12px rgba(8,26,54,.15),
+        inset 0 0 8px rgba(255,255,255,.7);
     }
 
-    /* Вишлист */
-    .wishlist-section .section-text {
-      margin-bottom: 28px;
-    }
-
-    /* Telegram */
+    /* Вишлист и Telegram */
+    .wishlist-section .section-text,
     .telegram-section .section-text {
-      max-width: 720px;
+      margin-bottom: 28px;
     }
 
     /* Анкета */
@@ -398,8 +454,8 @@
     .form-note {
       max-width: 680px;
       margin: 28px auto 0;
-      font-size: clamp(19px, 3vw, 23px);
-      line-height: 1.75;
+      font-size: 26px;
+      line-height: 1.65;
     }
 
     /* Нижняя подпись */
@@ -409,7 +465,7 @@
     }
 
     .footer-text {
-      font-size: 19px;
+      font-size: 26px;
       margin-bottom: 10px;
     }
 
@@ -418,7 +474,7 @@
       margin: 0;
     }
 
-    /* Появление блоков при прокрутке */
+    /* Появление блоков */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -447,13 +503,23 @@
     }
 
     @media (max-width: 600px) {
-      body {
-        font-size: 19px;
-      }
-
       .hero {
         min-height: 95vh;
         padding: 65px 15px;
+      }
+
+      .hero-intro,
+      .section-text,
+      .dress-note,
+      .form-note,
+      .address,
+      .date-time,
+      .countdown-title,
+      .countdown-label,
+      .button,
+      .footer-text,
+      .eyebrow {
+        font-size: 26px;
       }
 
       .countdown-section {
@@ -461,17 +527,17 @@
       }
 
       .countdown {
-        gap: 6px;
+        gap: 5px;
       }
 
       .countdown-item {
-        padding: 10px 2px;
+        padding: 10px 1px;
         border-radius: 12px;
       }
 
       .countdown-label {
-        font-size: 11px;
-        letter-spacing: .5px;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
       }
 
       .section {
@@ -487,14 +553,15 @@
       }
 
       .color-circle {
-        width: 54px;
-        height: 54px;
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
       }
 
       .button {
         max-width: 100%;
-        font-size: 15px;
-        padding: 12px 19px;
+        padding: 12px 15px;
+        overflow-wrap: anywhere;
       }
 
       .form-frame,
@@ -505,6 +572,10 @@
       .divider {
         width: 72%;
         gap: 13px;
+      }
+
+      .date-large {
+        font-size: clamp(54px, 11vw, 75px);
       }
     }
   </style>
@@ -550,7 +621,10 @@
           чтобы вы были с нами в такой важный для нас день.
         </p>
 
-        <p class="date-large">27 января 2027</p>
+        <div class="date-wrap" id="dateWrap">
+          <p class="date-large">27 января 2027</p>
+        </div>
+
         <p class="date-time">17:00 · МОСКВА</p>
 
       </div>
@@ -617,7 +691,8 @@
 
       <p class="section-text">
         Будем рады, если вы поддержите цветовую палитру нашего праздника.
-        Вы можете выбрать любой из этих оттенков.
+        Да-да, черный тоже можно! Белый разрешен невестой для мужских рубашек,
+        для небольших элементов декора тоже.
       </p>
 
       <div class="palette">
@@ -626,14 +701,8 @@
         <div class="color-circle color-3" title="Синий"></div>
         <div class="color-circle color-4" title="Голубой"></div>
         <div class="color-circle color-5" title="Светло-голубой"></div>
+        <div class="color-circle color-silver" title="Серебристый с пайетками"></div>
       </div>
-
-      <p class="dress-note">
-        Но особенно приятно нам будет, если<br>
-        вы исключите из своего образа белый<br>
-        и красный цвета (не считая цвета<br>
-        рубашек).
-      </p>
     </section>
 
     <div class="divider"><span>✦</span></div>
@@ -746,7 +815,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Плавное появление блоков при прокрутке
+    // Появление блоков при прокрутке
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach(entry => {
@@ -762,6 +831,23 @@
     document.querySelectorAll(".reveal").forEach(element => {
       observer.observe(element);
     });
+
+    // Блик по дате при появлении на экране
+    const dateWrap = document.getElementById("dateWrap");
+
+    const dateObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            dateWrap.classList.add("shine");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    dateObserver.observe(dateWrap);
   </script>
 
 </body>
