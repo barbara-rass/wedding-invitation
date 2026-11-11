@@ -433,103 +433,103 @@
     }
 
     /* Локации */
-    .locations-section {
-      width: min(1200px, calc(100% - 36px));
-    }
+    
+/* Локации */
+.locations-section {
+  width: min(1400px, calc(100% - 36px));
+}
 
-    .locations-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 0;
-      position: relative;
-      align-items: stretch;
-      margin-top: 28px;
-    }
+.locations-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 70px;
+  position: relative;
+  align-items: stretch;
+  margin-top: 35px;
+}
 
-    /* Центральная вертикальная линия */
-    .locations-grid::before {
-      content: "";
-      position: absolute;
-      top: 5px;
-      bottom: 5px;
-      left: 50%;
-      width: 1px;
-      background: rgba(255,255,255,.95);
-      box-shadow: 0 0 9px rgba(255,255,255,.75);
-      transform: translateX(-50%);
-    }
+/* Центральная вертикальная линия */
+.locations-grid::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 50%;
+  width: 1px;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 0 9px rgba(255,255,255,.75);
+  transform: translateX(-50%);
+}
 
-    .location-block {
-      min-width: 0;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0;
-    }
+.location-block {
+  min-width: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
 
-    /*
-      Внутренний контент занимает половину своей колонки.
-      Таким образом, ширина контента равна четверти всей секции.
-    */
-    .location-content {
-      width: 50%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+/* Текст занимает 70% своей половины */
+.location-content {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-    .location-block .venue-name {
-      font-size: clamp(40px, 5.3vw, 58px);
-      margin: 0 0 16px;
-      white-space: normal;
-      width: 100%;
-    }
+.location-block .venue-name {
+  font-size: clamp(40px, 5.3vw, 58px);
+  margin: 0 0 16px;
+  white-space: normal;
+  width: 100%;
+}
 
-    /* Время — главный акцент */
-    .location-time {
-      color: #050505;
-      text-shadow:
-        0 0 2px #fff,
-        0 0 6px #fff,
-        0 0 12px rgba(255,255,255,.95),
-        0 0 22px rgba(255,255,255,.8);
-      margin: 0 0 22px;
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1.3;
-      width: 100%;
-    }
+/* Время — главный акцент */
+.location-time {
+  color: #050505;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 6px #fff,
+    0 0 12px rgba(255,255,255,.95),
+    0 0 22px rgba(255,255,255,.8);
+  margin: 0 0 22px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+  width: 100%;
+}
 
-    .location-button {
-      display: inline-block;
-      margin: 0 auto 12px;
-      width: 100%;
-      min-width: 0;
-      padding: 13px 10px;
-      font-size: 30px;
-      line-height: 1.3;
-      text-align: center;
-      overflow-wrap: anywhere;
-    }
+.location-button {
+  display: inline-block;
+  margin: 0 auto 12px;
+  width: 100%;
+  min-width: 0;
+  padding: 13px 10px;
+  font-size: 30px;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
 
-    .location-address {
-      margin: 0 auto 22px;
-      width: 100%;
-      font-size: 30px;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
-    }
+.location-address {
+  margin: 0 auto 22px;
+  width: 100%;
+  font-size: 30px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
 
-    .location-description {
-      width: 100%;
-      margin: 0;
-      font-size: 27px;
-      line-height: 1.45;
-      text-align: center;
-    }
+.location-description {
+  width: 100%;
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.45;
+  text-align: center;
+}
+
 
     /* Мобильная версия */
     @media (max-width: 600px) {
@@ -612,69 +612,68 @@
       }
 
       /* Локации на телефоне — один столбец */
-      .locations-section {
-        width: calc(100% - 24px);
-      }
+      
+/* Локации на телефоне — один столбец */
+.locations-section {
+  width: calc(100% - 24px);
+}
 
-      .locations-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 36px;
-      }
+.locations-grid {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 36px;
+}
 
-      /* Вместо вертикальной линии — горизонтальная */
-      .locations-grid::before {
-        display: none;
-      }
+/* Вместо вертикальной линии — горизонтальная */
+.locations-grid::before {
+  display: none;
+}
 
-      .location-block {
-        position: relative;
-        width: 100%;
-      }
+.location-block {
+  position: relative;
+  width: 100%;
+}
 
-      .location-block + .location-block::before {
-        content: "";
-        position: absolute;
-        top: -19px;
-        left: 25%;
-        width: 50%;
-        height: 1px;
-        background: rgba(255,255,255,.95);
-        box-shadow: 0 0 9px rgba(255,255,255,.75);
-      }
+.location-block + .location-block::before {
+  content: "";
+  position: absolute;
+  top: -19px;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 0 9px rgba(255,255,255,.75);
+}
 
-      /*
-        На телефоне контент шире для удобного чтения,
-        но остаётся по центру колонки.
-      */
-      .location-content {
-        width: 75%;
-      }
+/* На телефоне текст занимает 85% ширины */
+.location-content {
+  width: 85%;
+}
 
-      .location-block .venue-name {
-        font-size: clamp(40px, 9vw, 52px);
-        margin-bottom: 12px;
-      }
+.location-block .venue-name {
+  font-size: clamp(40px, 9vw, 52px);
+  margin-bottom: 12px;
+}
 
-      .location-time {
-        font-size: 36px;
-        margin-bottom: 18px;
-      }
+.location-time {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
 
-      .location-button {
-        font-size: 28px;
-        padding: 12px 8px;
-      }
+.location-button {
+  font-size: 28px;
+  padding: 12px 8px;
+}
 
-      .location-address {
-        font-size: 28px;
-        margin-bottom: 18px;
-      }
+.location-address {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
 
-      .location-description {
-        font-size: 25px;
-        line-height: 1.45;
-      }
-    }
+.location-description {
+  font-size: 25px;
+  line-height: 1.45;
+}
+
 
     @media (prefers-reduced-motion: reduce) {
       *,
