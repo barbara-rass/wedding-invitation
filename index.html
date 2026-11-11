@@ -212,8 +212,7 @@
       100% { left: 130%; opacity: 0; }
     }
 
-    /* Деликатный салют по обе стороны даты */
-   /* Небольшие цветные фейерверки по бокам даты */
+   /* Салюты, разлетающиеся от даты в стороны */
 .date-firework {
   position: absolute;
   top: 50%;
@@ -224,17 +223,18 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at 50% 50%, #fff 0 2px, transparent 3px),
-    radial-gradient(circle at 50% 3%, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 50% 3%, #fff 0 2px, transparent 3px),
     radial-gradient(circle at 75% 10%, #9eeaff 0 2px, transparent 3px),
     radial-gradient(circle at 94% 31%, #ffd5e9 0 2px, transparent 3px),
     radial-gradient(circle at 97% 62%, #ffe6a8 0 2px, transparent 3px),
     radial-gradient(circle at 76% 88%, #b8dfff 0 2px, transparent 3px),
-    radial-gradient(circle at 48% 98%, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 48% 98%, #fff 0 2px, transparent 3px),
     radial-gradient(circle at 20% 83%, #f7c9ff 0 2px, transparent 3px),
     radial-gradient(circle at 4% 55%, #a9e8ff 0 2px, transparent 3px),
     radial-gradient(circle at 13% 25%, #ffe6a8 0 2px, transparent 3px);
   filter: drop-shadow(0 0 4px rgba(255,255,255,.9));
-  animation: fireworkBurst 2.8s ease-out infinite;
+  opacity: 0;
+  animation: fireworkFly 2.6s ease-out infinite;
 }
 
 .date-firework::before {
@@ -243,28 +243,15 @@
   inset: 0;
   border-radius: 50%;
   background: conic-gradient(
-    from 0deg,
-    transparent 0deg 12deg,
-    #ffffff 13deg 14deg,
-    transparent 15deg 40deg,
-    #9eeaff 41deg 42deg,
-    transparent 43deg 70deg,
-    #ffd5e9 71deg 72deg,
-    transparent 73deg 100deg,
-    #ffe6a8 101deg 102deg,
-    transparent 103deg 130deg,
-    #b8dfff 131deg 132deg,
-    transparent 133deg 160deg,
-    #ffffff 161deg 162deg,
-    transparent 163deg 190deg,
-    #f7c9ff 191deg 192deg,
-    transparent 193deg 220deg,
-    #a9e8ff 221deg 222deg,
-    transparent 223deg 250deg,
-    #ffe6a8 251deg 252deg,
-    transparent 253deg 280deg,
-    #ffffff 281deg 282deg,
-    transparent 283deg 360deg
+    #fff 0deg 2deg, transparent 3deg 38deg,
+    #9eeaff 39deg 41deg, transparent 42deg 78deg,
+    #ffd5e9 79deg 81deg, transparent 82deg 118deg,
+    #ffe6a8 119deg 121deg, transparent 122deg 158deg,
+    #b8dfff 159deg 161deg, transparent 162deg 198deg,
+    #fff 199deg 201deg, transparent 202deg 238deg,
+    #f7c9ff 239deg 241deg, transparent 242deg 278deg,
+    #a9e8ff 279deg 281deg, transparent 282deg 318deg,
+    #ffe6a8 319deg 321deg, transparent 322deg 360deg
   );
   -webkit-mask: radial-gradient(circle, transparent 0 18%, #000 25% 100%);
   mask: radial-gradient(circle, transparent 0 18%, #000 25% 100%);
@@ -274,7 +261,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 50%;
   background:
     radial-gradient(circle at 35% 12%, #fff 0 2px, transparent 3px),
     radial-gradient(circle at 88% 43%, #9eeaff 0 2px, transparent 3px),
@@ -285,34 +271,46 @@
 
 .firework-left {
   right: calc(100% + 8px);
+  --fly-x: -35px;
 }
 
 .firework-right {
   left: calc(100% + 8px);
-  animation-delay: 1.4s;
+  --fly-x: 35px;
+  animation-delay: 1.3s;
 }
 
-@keyframes fireworkBurst {
+@keyframes fireworkFly {
   0% {
     opacity: 0;
-    scale: .35;
+    transform: translate(0, -50%) scale(.25);
   }
-  20% {
+  15% {
     opacity: 1;
-    scale: 1;
+    transform: translate(0, -50%) scale(.75);
   }
-  55% {
-    opacity: .85;
-    scale: 1.12;
+  65% {
+    opacity: .9;
+    transform: translate(var(--fly-x), -50%) scale(1);
   }
   100% {
     opacity: 0;
-    scale: 1.3;
+    transform: translate(calc(var(--fly-x) * 1.5), -50%) scale(.45);
   }
 }
-    .date-firework {
-  width: 42px;
-  height: 42px;
+    @media (max-width: 600px) {
+  .date-firework {
+    width: 42px;
+    height: 42px;
+  }
+
+  .firework-left {
+    --fly-x: -18px;
+  }
+
+  .firework-right {
+    --fly-x: 18px;
+  }
 }
     /* Таймер */
     .countdown-section {
