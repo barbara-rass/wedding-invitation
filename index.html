@@ -37,6 +37,7 @@
       overflow-x: hidden;
     }
 
+    /* Звёзды на фоне */
     .star-field {
       position: fixed;
       inset: 0;
@@ -95,6 +96,7 @@
       line-height: 1.15;
     }
 
+    /* Первый экран */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -147,10 +149,12 @@
       line-height: 1.65;
     }
 
-    /* Дата и декоративные салюты */
+    /* Дата и фейерверки */
     .date-stage {
       position: relative;
-      display: inline-block;
+      display: block;
+      width: fit-content;
+      max-width: 100%;
       margin: 55px auto 65px;
     }
 
@@ -168,6 +172,7 @@
       font-size: clamp(60px, 10vw, 92px);
       margin: 0;
       color: var(--dark);
+      white-space: nowrap;
       text-shadow:
         0 0 3px #fff,
         0 0 9px rgba(255,255,255,.95),
@@ -207,38 +212,56 @@
       100% { left: 130%; opacity: 0; }
     }
 
+    /* Деликатный салют по обе стороны даты */
     .date-firework {
       position: absolute;
       top: 50%;
+      width: 65px;
+      height: 65px;
       transform: translateY(-50%);
-      color: white;
-      font-size: 43px;
-      line-height: 1;
-      text-shadow:
-        0 0 5px #fff,
-        0 0 12px rgba(255,255,255,.95),
-        0 0 25px rgba(255,255,255,.8);
-      animation: fireworkGlow 2.5s ease-in-out infinite;
       pointer-events: none;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #fff 0 2px, rgba(255,255,255,.8) 3px, transparent 5px);
+      filter: drop-shadow(0 0 5px white);
+      animation: fireworkGlow 2.8s ease-in-out infinite;
+    }
+
+    .date-firework::before,
+    .date-firework::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        linear-gradient(0deg, transparent 47%, rgba(255,255,255,.95) 49%, transparent 52%),
+        linear-gradient(45deg, transparent 47%, rgba(255,255,255,.85) 49%, transparent 52%),
+        linear-gradient(90deg, transparent 47%, rgba(255,255,255,.95) 49%, transparent 52%),
+        linear-gradient(135deg, transparent 47%, rgba(255,255,255,.85) 49%, transparent 52%);
+    }
+
+    .date-firework::after {
+      transform: rotate(22.5deg) scale(.75);
+      opacity: .8;
     }
 
     .firework-left {
-      right: calc(100% + 12px);
+      right: calc(100% + 8px);
     }
 
     .firework-right {
-      left: calc(100% + 12px);
-      animation-delay: 1.2s;
+      left: calc(100% + 8px);
+      animation-delay: 1.4s;
     }
 
     @keyframes fireworkGlow {
       0%, 100% {
-        opacity: .65;
-        scale: .85;
+        opacity: .45;
+        scale: .7;
       }
       50% {
         opacity: 1;
-        scale: 1.2;
+        scale: 1.15;
       }
     }
 
@@ -285,6 +308,7 @@
       font-weight: 600;
     }
 
+    /* Разделители */
     .divider {
       display: flex;
       align-items: center;
@@ -306,6 +330,7 @@
       background: rgba(255,255,255,.75);
     }
 
+    /* Общие секции */
     .section {
       padding: 65px 25px;
       text-align: center;
@@ -326,6 +351,7 @@
       line-height: 1.65;
     }
 
+    /* Кнопки */
     .button {
       display: inline-block;
       padding: 13px 28px;
@@ -350,6 +376,7 @@
       box-shadow: 0 7px 18px rgba(8,35,54,.12);
     }
 
+    /* Палитра дресс-кода */
     .palette {
       display: flex;
       justify-content: center;
@@ -400,6 +427,7 @@
       margin-bottom: 28px;
     }
 
+    /* Кнопка RSVP */
     .rsvp-button {
       display: inline-block;
       max-width: 100%;
@@ -445,6 +473,7 @@
       line-height: 1.65;
     }
 
+    /* Подвал */
     footer {
       text-align: center;
       padding: 65px 20px 170px;
@@ -460,6 +489,7 @@
       margin: 0;
     }
 
+    /* Появление секций при прокрутке */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -564,6 +594,7 @@
       text-align: center;
     }
 
+    /* Мобильная версия */
     @media (max-width: 600px) {
       body { font-size: 30px; }
 
@@ -630,13 +661,25 @@
       }
 
       .date-large {
-        font-size: clamp(54px, 11vw, 75px);
+        font-size: clamp(43px, 9.5vw, 62px);
       }
 
-      .date-firework { font-size: 27px; }
+      .date-wrap {
+        padding: 5px 7px 9px;
+      }
 
-      .firework-left { right: calc(100% + 2px); }
-      .firework-right { left: calc(100% + 2px); }
+      .date-firework {
+        width: 42px;
+        height: 42px;
+      }
+
+      .firework-left {
+        right: calc(100% + 2px);
+      }
+
+      .firework-right {
+        left: calc(100% + 2px);
+      }
 
       .locations-section {
         width: calc(100% - 24px);
@@ -720,7 +763,6 @@
 </head>
 
 <body>
-
   <div class="star-field" aria-hidden="true">
     <span class="star">✦</span>
     <span class="star">✧</span>
@@ -735,7 +777,6 @@
   </div>
 
   <main>
-
     <header class="hero">
       <div class="hero-content reveal">
 
@@ -759,18 +800,19 @@
         </p>
 
         <div class="date-stage">
-  <span class="date-firework firework-left" aria-hidden="true"></span>
+          <span class="date-firework firework-left" aria-hidden="true"></span>
 
-  <div class="date-wrap">
-    <div class="wedding-date">27 января 2027</div>
-  </div>
+          <div class="date-wrap" id="dateWrap">
+            <div class="date-large">27 января 2027</div>
+          </div>
 
-  <span class="date-firework firework-right" aria-hidden="true"></span>
-</div>
+          <span class="date-firework firework-right" aria-hidden="true"></span>
+        </div>
 
       </div>
     </header>
 
+    <!-- Таймер -->
     <section class="countdown-section reveal">
       <h2 class="countdown-title">До нашей встречи</h2>
 
@@ -799,6 +841,7 @@
 
     <div class="divider"><span>✦</span></div>
 
+    <!-- Локации -->
     <section class="container section locations-section reveal">
       <h2>Где мы встретимся</h2>
 
@@ -870,6 +913,7 @@
 
     <div class="divider"><span>✦</span></div>
 
+    <!-- Дресс-код -->
     <section class="container section reveal">
       <h2>Дресс-код</h2>
 
@@ -891,6 +935,7 @@
 
     <div class="divider"><span>✦</span></div>
 
+    <!-- Вишлист -->
     <section class="container section wishlist-section reveal">
       <h2>Наш вишлист</h2>
 
@@ -911,6 +956,7 @@
 
     <div class="divider"><span>✦</span></div>
 
+    <!-- Telegram -->
     <section class="container section telegram-section reveal">
       <h2>Будем на связи</h2>
 
@@ -932,6 +978,7 @@
 
     <div class="divider"><span>✦</span></div>
 
+    <!-- Подтверждение участия -->
     <section class="container section reveal">
       <h2>Подтвердите участие</h2>
 
@@ -1006,22 +1053,24 @@
       observer.observe(element);
     });
 
-    // Блик по дате при появлении на экране
+    // Однократный блик по дате при появлении на экране
     const dateWrap = document.getElementById("dateWrap");
 
-    const dateObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            dateWrap.classList.add("shine");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+    if (dateWrap) {
+      const dateObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              dateWrap.classList.add("shine");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-    dateObserver.observe(dateWrap);
+      dateObserver.observe(dateWrap);
+    }
   </script>
 
 </body>
