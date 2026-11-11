@@ -213,7 +213,7 @@
     }
 
     /* Деликатный салют по обе стороны даты */
-   /* Миниатюрные фейерверки по бокам даты */
+   /* Небольшие цветные фейерверки по бокам даты */
 .date-firework {
   position: absolute;
   top: 50%;
@@ -224,16 +224,16 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at 50% 50%, #fff 0 2px, transparent 3px),
-    radial-gradient(circle at 50% 3%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 75% 10%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 94% 31%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 97% 62%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 76% 88%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 48% 98%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 20% 83%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 4% 55%, #fff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 13% 25%, #fff 0 1.5px, transparent 2.5px);
-  filter: drop-shadow(0 0 4px white);
+    radial-gradient(circle at 50% 3%, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 75% 10%, #9eeaff 0 2px, transparent 3px),
+    radial-gradient(circle at 94% 31%, #ffd5e9 0 2px, transparent 3px),
+    radial-gradient(circle at 97% 62%, #ffe6a8 0 2px, transparent 3px),
+    radial-gradient(circle at 76% 88%, #b8dfff 0 2px, transparent 3px),
+    radial-gradient(circle at 48% 98%, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 20% 83%, #f7c9ff 0 2px, transparent 3px),
+    radial-gradient(circle at 4% 55%, #a9e8ff 0 2px, transparent 3px),
+    radial-gradient(circle at 13% 25%, #ffe6a8 0 2px, transparent 3px);
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.9));
   animation: fireworkBurst 2.8s ease-out infinite;
 }
 
@@ -245,28 +245,26 @@
   background: conic-gradient(
     from 0deg,
     transparent 0deg 12deg,
-    rgba(255,255,255,.95) 13deg 14deg,
+    #ffffff 13deg 14deg,
     transparent 15deg 40deg,
-    rgba(255,255,255,.8) 41deg 42deg,
+    #9eeaff 41deg 42deg,
     transparent 43deg 70deg,
-    rgba(255,255,255,.95) 71deg 72deg,
+    #ffd5e9 71deg 72deg,
     transparent 73deg 100deg,
-    rgba(255,255,255,.8) 101deg 102deg,
+    #ffe6a8 101deg 102deg,
     transparent 103deg 130deg,
-    rgba(255,255,255,.95) 131deg 132deg,
+    #b8dfff 131deg 132deg,
     transparent 133deg 160deg,
-    rgba(255,255,255,.8) 161deg 162deg,
+    #ffffff 161deg 162deg,
     transparent 163deg 190deg,
-    rgba(255,255,255,.95) 191deg 192deg,
+    #f7c9ff 191deg 192deg,
     transparent 193deg 220deg,
-    rgba(255,255,255,.8) 221deg 222deg,
+    #a9e8ff 221deg 222deg,
     transparent 223deg 250deg,
-    rgba(255,255,255,.95) 251deg 252deg,
+    #ffe6a8 251deg 252deg,
     transparent 253deg 280deg,
-    rgba(255,255,255,.8) 281deg 282deg,
-    transparent 283deg 310deg,
-    rgba(255,255,255,.95) 311deg 312deg,
-    transparent 313deg 360deg
+    #ffffff 281deg 282deg,
+    transparent 283deg 360deg
   );
   -webkit-mask: radial-gradient(circle, transparent 0 18%, #000 25% 100%);
   mask: radial-gradient(circle, transparent 0 18%, #000 25% 100%);
@@ -278,11 +276,11 @@
   inset: 0;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 35% 12%, white 0 1px, transparent 2px),
-    radial-gradient(circle at 88% 43%, white 0 1px, transparent 2px),
-    radial-gradient(circle at 62% 91%, white 0 1px, transparent 2px),
-    radial-gradient(circle at 9% 68%, white 0 1px, transparent 2px),
-    radial-gradient(circle at 24% 39%, white 0 1px, transparent 2px);
+    radial-gradient(circle at 35% 12%, #fff 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 43%, #9eeaff 0 2px, transparent 3px),
+    radial-gradient(circle at 62% 91%, #ffd5e9 0 2px, transparent 3px),
+    radial-gradient(circle at 9% 68%, #ffe6a8 0 2px, transparent 3px),
+    radial-gradient(circle at 24% 39%, #b8dfff 0 2px, transparent 3px);
 }
 
 .firework-left {
@@ -316,15 +314,6 @@
   width: 42px;
   height: 42px;
 }
-
-.firework-left {
-  right: calc(100% + 2px);
-}
-
-.firework-right {
-  left: calc(100% + 2px);
-}
-
     /* Таймер */
     .countdown-section {
       text-align: center;
