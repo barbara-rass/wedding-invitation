@@ -20,13 +20,9 @@
       --white: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -41,7 +37,6 @@
       overflow-x: hidden;
     }
 
-    /* Мерцающие звёзды на фоне */
     .star-field {
       position: fixed;
       inset: 0;
@@ -89,7 +84,6 @@
       margin: 0 auto;
     }
 
-    /* Декоративные заголовки */
     h1, h2, h3,
     .hero-subtitle,
     .date-large,
@@ -101,7 +95,6 @@
       line-height: 1.15;
     }
 
-    /* Первый экран */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -154,12 +147,18 @@
       line-height: 1.65;
     }
 
-    /* Дата с неоновым свечением и бликом */
+    /* Дата и декоративные салюты */
+    .date-stage {
+      position: relative;
+      display: inline-block;
+      margin: 55px auto 65px;
+    }
+
     .date-wrap {
       display: inline-block;
       position: relative;
       overflow: hidden;
-      margin-top: 35px;
+      margin: 0;
       padding: 5px 12px 9px;
     }
 
@@ -208,11 +207,39 @@
       100% { left: 130%; opacity: 0; }
     }
 
-    .date-time {
-      font-size: 32px;
-      letter-spacing: 3px;
-      font-weight: 600;
-      margin: 0;
+    .date-firework {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 43px;
+      line-height: 1;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 12px rgba(255,255,255,.95),
+        0 0 25px rgba(255,255,255,.8);
+      animation: fireworkGlow 2.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .firework-left {
+      right: calc(100% + 12px);
+    }
+
+    .firework-right {
+      left: calc(100% + 12px);
+      animation-delay: 1.2s;
+    }
+
+    @keyframes fireworkGlow {
+      0%, 100% {
+        opacity: .65;
+        scale: .85;
+      }
+      50% {
+        opacity: 1;
+        scale: 1.2;
+      }
     }
 
     /* Таймер */
@@ -258,7 +285,6 @@
       font-weight: 600;
     }
 
-    /* Линия со звёздочкой */
     .divider {
       display: flex;
       align-items: center;
@@ -280,7 +306,6 @@
       background: rgba(255,255,255,.75);
     }
 
-    /* Секции без рамок */
     .section {
       padding: 65px 25px;
       text-align: center;
@@ -301,7 +326,6 @@
       line-height: 1.65;
     }
 
-    /* Кнопки */
     .button {
       display: inline-block;
       padding: 13px 28px;
@@ -326,7 +350,6 @@
       box-shadow: 0 7px 18px rgba(8,35,54,.12);
     }
 
-    /* Палитра */
     .palette {
       display: flex;
       justify-content: center;
@@ -351,7 +374,6 @@
     .color-4 { background: #4f7da9; }
     .color-5 { background: #91b5d8; }
 
-    /* Статичные мелкие пайетки */
     .color-silver {
       background-color: #c5c9d0;
       background-image:
@@ -373,13 +395,11 @@
         inset 0 0 8px rgba(255,255,255,.7);
     }
 
-    /* Вишлист и Telegram */
     .wishlist-section .section-text,
     .telegram-section .section-text {
       margin-bottom: 28px;
     }
 
-    /* Кнопка подтверждения участия */
     .rsvp-button {
       display: inline-block;
       max-width: 100%;
@@ -425,7 +445,6 @@
       line-height: 1.65;
     }
 
-    /* Нижняя подпись */
     footer {
       text-align: center;
       padding: 65px 20px 170px;
@@ -441,7 +460,6 @@
       margin: 0;
     }
 
-    /* Появление блоков */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -467,7 +485,6 @@
       margin-top: 35px;
     }
 
-    /* Центральная вертикальная линия */
     .locations-grid::before {
       content: "";
       position: absolute;
@@ -505,7 +522,6 @@
       width: 100%;
     }
 
-    /* Время — главный акцент */
     .location-time {
       color: #050505;
       text-shadow:
@@ -548,11 +564,8 @@
       text-align: center;
     }
 
-    /* Мобильная версия */
     @media (max-width: 600px) {
-      body {
-        font-size: 30px;
-      }
+      body { font-size: 30px; }
 
       .hero {
         min-height: 95vh;
@@ -563,7 +576,6 @@
       .section-text,
       .dress-note,
       .form-note,
-      .date-time,
       .countdown-title,
       .countdown-label,
       .button,
@@ -576,9 +588,7 @@
         padding: 10px 12px 45px;
       }
 
-      .countdown {
-        gap: 5px;
-      }
+      .countdown { gap: 5px; }
 
       .countdown-item {
         padding: 10px 1px;
@@ -590,13 +600,9 @@
         overflow-wrap: anywhere;
       }
 
-      .section {
-        padding: 48px 17px;
-      }
+      .section { padding: 48px 17px; }
 
-      .venue-decoration {
-        gap: 9px;
-      }
+      .venue-decoration { gap: 9px; }
 
       .venue-name {
         font-size: clamp(48px, 11vw, 65px);
@@ -619,11 +625,19 @@
         gap: 13px;
       }
 
+      .date-stage {
+        margin: 45px auto 55px;
+      }
+
       .date-large {
         font-size: clamp(54px, 11vw, 75px);
       }
 
-      /* Локации на телефоне — один столбец */
+      .date-firework { font-size: 27px; }
+
+      .firework-left { right: calc(100% + 2px); }
+      .firework-right { left: calc(100% + 2px); }
+
       .locations-section {
         width: calc(100% - 24px);
       }
@@ -633,9 +647,7 @@
         row-gap: 36px;
       }
 
-      .locations-grid::before {
-        display: none;
-      }
+      .locations-grid::before { display: none; }
 
       .location-block {
         position: relative;
@@ -653,9 +665,7 @@
         box-shadow: 0 0 9px rgba(255,255,255,.75);
       }
 
-      .location-content {
-        width: 85%;
-      }
+      .location-content { width: 85%; }
 
       .location-block .venue-name {
         font-size: clamp(40px, 9vw, 52px);
@@ -688,9 +698,7 @@
         font-size: 29px;
       }
 
-      footer {
-        padding: 50px 15px 170px;
-      }
+      footer { padding: 50px 15px 170px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -728,7 +736,6 @@
 
   <main>
 
-    <!-- Первый экран -->
     <header class="hero">
       <div class="hero-content reveal">
 
@@ -751,16 +758,19 @@
           чтобы вы были с нами в такой важный для нас день.
         </p>
 
-        <div class="date-wrap" id="dateWrap">
-          <p class="date-large">27 января 2027</p>
-        </div>
+        <div class="date-stage">
+          <span class="date-firework firework-left" aria-hidden="true">✺</span>
 
-        <p class="date-time">15:00 · МОСКВА</p>
+          <div class="date-wrap" id="dateWrap">
+            <p class="date-large">27 января 2027</p>
+          </div>
+
+          <span class="date-firework firework-right" aria-hidden="true">✷</span>
+        </div>
 
       </div>
     </header>
 
-    <!-- Таймер -->
     <section class="countdown-section reveal">
       <h2 class="countdown-title">До нашей встречи</h2>
 
@@ -789,20 +799,18 @@
 
     <div class="divider"><span>✦</span></div>
 
-    <!-- Две локации -->
     <section class="container section locations-section reveal">
       <h2>Где мы встретимся</h2>
 
       <div class="locations-grid">
 
-        <!-- Левая колонка: торжество -->
         <div class="location-block ceremony-block">
           <div class="location-content">
 
             <h3 class="venue-name">Торжество</h3>
 
             <p class="location-time">
-              Начало в 15:00
+              Встречаемся в 15:00
             </p>
 
             <a
@@ -826,7 +834,6 @@
           </div>
         </div>
 
-        <!-- Правая колонка: празднество -->
         <div class="location-block celebration-block">
           <div class="location-content">
 
@@ -863,7 +870,6 @@
 
     <div class="divider"><span>✦</span></div>
 
-    <!-- Дресс-код -->
     <section class="container section reveal">
       <h2>Дресс-код</h2>
 
@@ -885,7 +891,6 @@
 
     <div class="divider"><span>✦</span></div>
 
-    <!-- Вишлист -->
     <section class="container section wishlist-section reveal">
       <h2>Наш вишлист</h2>
 
@@ -906,7 +911,6 @@
 
     <div class="divider"><span>✦</span></div>
 
-    <!-- Telegram -->
     <section class="container section telegram-section reveal">
       <h2>Будем на связи</h2>
 
@@ -928,7 +932,6 @@
 
     <div class="divider"><span>✦</span></div>
 
-    <!-- Подтверждение участия -->
     <section class="container section reveal">
       <h2>Подтвердите участие</h2>
 
@@ -951,7 +954,6 @@
 
   </main>
 
-  <!-- Нижняя подпись -->
   <footer class="reveal">
     <p class="footer-text">С любовью и нетерпением ждём встречи,</p>
     <p class="signature">Ваши Данил и Варвара</p>
