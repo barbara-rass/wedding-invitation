@@ -167,18 +167,17 @@
     }
 
     .date-large {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(60px, 10vw, 92px);
-      margin: 0;
-      color: var(--dark);
-      white-space: nowrap;
-      text-shadow:
-        0 0 3px #fff,
-        0 0 9px rgba(255,255,255,.95),
-        0 0 20px rgba(255,255,255,.75),
-        0 0 34px rgba(255,255,255,.45);
-    }
+  font-family: "Great Vibes", cursive;
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 12px #fff,
+    0 0 22px #fff,
+    0 0 38px rgba(255, 255, 255, .95),
+    0 0 60px rgba(210, 240, 255, .85),
+    0 0 85px rgba(180, 225, 255, .7);
+  animation: dateGlow 2.2s ease-in-out infinite alternate;
+}
 
     .date-wrap::after {
       content: "";
@@ -732,9 +731,10 @@
         gap: 13px;
       }
 
-      .date-stage {
-        margin: 45px auto 55px;
-      }
+     .date-stage {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
 
       .date-large {
         font-size: clamp(43px, 9.5vw, 62px);
