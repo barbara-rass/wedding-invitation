@@ -867,6 +867,30 @@
     max-width: 100%;
   }
 }
+    /* Защищаем огромную дату от обрезания */
+.date-stage {
+  width: 100%;
+  overflow: visible;
+  padding: 12px 15px;
+  box-sizing: border-box;
+}
+
+.date-wrap {
+  width: 100%;
+  overflow: visible;
+}
+
+.date-large {
+  display: inline-block;
+  max-width: 100%;
+  overflow: visible;
+  position: relative;
+}
+
+/* Блик не должен обрезать края даты */
+.date-wrap::after {
+  pointer-events: none;
+}
   </style>
 </head>
 
