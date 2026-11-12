@@ -836,6 +836,37 @@
         transform: none;
       }
     }
+    /* Огромная дата свадьбы */
+.date-large {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(76px, 12vw, 160px);
+  line-height: 1.05;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  text-shadow:
+    0 0 8px #fff,
+    0 0 18px #fff,
+    0 0 32px #fff,
+    0 0 55px rgba(255, 255, 255, 1),
+    0 0 85px rgba(190, 230, 255, .95),
+    0 0 115px rgba(160, 215, 255, .85);
+  animation: dateGlow 2.2s ease-in-out infinite alternate;
+}
+
+/* Дата на телефонах */
+@media (max-width: 600px) {
+  .date-large {
+    font-size: clamp(58px, 15.5vw, 100px);
+    letter-spacing: -2px;
+  }
+
+  .date-stage {
+    width: 100%;
+    max-width: 100%;
+  }
+}
   </style>
 </head>
 
