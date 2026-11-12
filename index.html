@@ -891,38 +891,18 @@
 .date-wrap::after {
   pointer-events: none;
 }
- /* Тонкая чёрная дата с белым свечением */
+/* Тёмно-синие цифры с белым сиянием вокруг */
 .date-large {
-  color: #111;
+  color: #081a36;
+  -webkit-text-fill-color: #081a36;
   font-weight: 400;
-  -webkit-text-stroke: 0.4px #111;
   text-shadow:
-    0 0 5px #fff,
-    0 0 12px #fff,
-    0 0 24px #fff,
-    0 0 40px rgba(255, 255, 255, 1),
-    0 0 65px rgba(220, 240, 255, .95),
-    0 0 95px rgba(190, 225, 255, .8);
+    0 0 3px rgba(255, 255, 255, 1),
+    0 0 10px rgba(255, 255, 255, 1),
+    0 0 22px rgba(255, 255, 255, .95),
+    0 0 40px rgba(255, 255, 255, .85),
+    0 0 65px rgba(220, 240, 255, .8);
 }
-
-/* Сохраняем чёрный цвет и во время анимации */
-@keyframes dateGlow {
-  from {
-    color: #081a36;
-    text-shadow:
-      0 0 5px #fff,
-      0 0 12px #fff,
-      0 0 24px #fff,
-      0 0 40px rgba(255, 255, 255, 1);
-  }
-  to {
-    color: #111;
-    text-shadow:
-      0 0 8px #fff,
-      0 0 18px #fff,
-      0 0 32px #fff,
-      0 0 55px rgba(255, 255, 255, 1),
-      0 0 85px rgba(190, 230, 255, .95);
 
   </style>
 </head>
