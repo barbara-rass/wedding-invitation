@@ -149,36 +149,72 @@
       line-height: 1.65;
     }
 
-    /* Дата и фейерверки */
+    /* Дата и падающие звёзды */
     .date-stage {
       position: relative;
       display: block;
-      width: fit-content;
+      width: 100%;
       max-width: 100%;
       margin: 55px auto 65px;
+      padding: 12px 15px;
+      box-sizing: border-box;
+      overflow: visible;
     }
 
     .date-wrap {
-      display: inline-block;
+      display: block;
       position: relative;
-      overflow: hidden;
+      width: 100%;
       margin: 0;
       padding: 5px 12px 9px;
+      overflow: visible;
     }
 
-    ..date-large {
-  color: var(--dark);
-  -webkit-text-fill-color: var(--dark);
-        font-family: "Great Vibes", cursive;
-  font-weight: 400;
-  text-shadow:
-    0 0 4px #fff,
-    0 0 12px #fff,
-    0 0 25px rgba(255, 255, 255, .95),
-    0 0 45px rgba(220, 240, 255, .9),
-    0 0 70px rgba(220, 240, 255, .75);
-}
-   
+    .date-large {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      text-align: center;
+      white-space: nowrap;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(76px, 14vw, 140px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--dark);
+      -webkit-text-fill-color: var(--dark);
+      text-shadow:
+        0 0 4px rgba(255,255,255,1),
+        0 0 10px rgba(255,255,255,1),
+        0 0 22px rgba(255,255,255,.98),
+        0 0 38px rgba(255,255,255,.92),
+        0 0 58px rgba(220,240,255,.9),
+        0 0 82px rgba(200,230,255,.8);
+      animation: dateGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes dateGlow {
+      from {
+        text-shadow:
+          0 0 4px rgba(255,255,255,1),
+          0 0 10px rgba(255,255,255,1),
+          0 0 22px rgba(255,255,255,.98),
+          0 0 38px rgba(255,255,255,.92),
+          0 0 58px rgba(220,240,255,.9),
+          0 0 82px rgba(200,230,255,.8);
+      }
+      to {
+        text-shadow:
+          0 0 6px rgba(255,255,255,1),
+          0 0 15px rgba(255,255,255,1),
+          0 0 30px rgba(255,255,255,1),
+          0 0 50px rgba(255,255,255,.98),
+          0 0 75px rgba(220,240,255,.95),
+          0 0 105px rgba(190,225,255,.9);
+      }
+    }
+
+    /* Однократный световой блик */
     .date-wrap::after {
       content: "";
       position: absolute;
@@ -186,13 +222,13 @@
       top: -30%;
       bottom: -30%;
       left: -60%;
-      width: 35%;
+      width: 28%;
       transform: skewX(-22deg);
       background: linear-gradient(
         90deg,
         transparent,
         rgba(255,255,255,.2),
-        rgba(255,255,255,1),
+        rgba(255,255,255,.95),
         rgba(255,255,255,.25),
         transparent
       );
@@ -205,132 +241,86 @@
     }
 
     @keyframes dateShine {
-      0% { left: -60%; opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { left: 130%; opacity: 0; }
+      0% { left: -40%; opacity: 0; }
+      15% { opacity: .8; }
+      85% { opacity: .8; }
+      100% { left: 115%; opacity: 0; }
     }
 
-  /* Падающие звёзды по обе стороны даты */
-.date-firework {
-  position: absolute;
-  top: 50%;
-  width: 65px;
-  height: 3px;
-  pointer-events: none;
-  opacity: 0;
-  border-radius: 50%;
-  transform-origin: center;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.15) 20%,
-    rgba(158,234,255,.65) 65%,
-    #fff 100%
-  );
-  filter: drop-shadow(0 0 4px #fff);
-}
-
-.date-firework::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  box-shadow:
-    0 0 5px #fff,
-    0 0 10px #9eeaff,
-    0 0 16px #9eeaff;
-}
-
-.date-firework::after {
-  content: "";
-  position: absolute;
-  right: 15px;
-  top: -5px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #ffd5e9;
-  box-shadow:
-    -12px 5px 0 #ffe6a8,
-    -25px -2px 0 #b8dfff,
-    -35px 6px 0 #f7c9ff;
-}
-
-.firework-left {
-  right: calc(100% + 5px);
-  transform: translateY(-50%) rotate(145deg);
-  animation: shootingLeft 2.5s ease-out infinite;
-}
-
-.firework-right {
-  left: calc(100% + 5px);
-  transform: translateY(-50%) rotate(35deg);
-  animation: shootingRight 2.5s ease-out infinite;
-  animation-delay: 1.25s;
-}
-
-@keyframes shootingLeft {
-  0% {
-    opacity: 0;
-    translate: 0 0;
-  }
-  15% { opacity: 1; }
-  75% {
-    opacity: .9;
-    translate: -28px -22px;
-  }
-  100% {
-    opacity: 0;
-    translate: -55px -42px;
-  }
-}
-
-@keyframes shootingRight {
-  0% {
-    opacity: 0;
-    translate: 0 0;
-  }
-  15% { opacity: 1; }
-  75% {
-    opacity: .9;
-    translate: 28px -22px;
-  }
-  100% {
-    opacity: 0;
-    translate: 55px -42px;
-  }
-}
     .date-firework {
-  width: 42px;
-}
+      position: absolute;
+      top: 50%;
+      width: 65px;
+      height: 3px;
+      pointer-events: none;
+      opacity: 0;
+      border-radius: 50%;
+      transform-origin: center;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.15) 20%,
+        rgba(158,234,255,.65) 65%,
+        #fff 100%
+      );
+      filter: drop-shadow(0 0 4px #fff);
+    }
 
-.firework-left {
-  right: calc(100% + 2px);
-}
+    .date-firework::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      box-shadow: 0 0 5px #fff, 0 0 10px #9eeaff, 0 0 16px #9eeaff;
+    }
 
-.firework-right {
-  left: calc(100% + 2px);
-}
+    .date-firework::after {
+      content: "";
+      position: absolute;
+      right: 15px;
+      top: -5px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffd5e9;
+      box-shadow:
+        -12px 5px 0 #ffe6a8,
+        -25px -2px 0 #b8dfff,
+        -35px 6px 0 #f7c9ff;
+    }
 
-@keyframes shootingLeft {
-  0% { opacity: 0; translate: 0 0; }
-  15% { opacity: 1; }
-  75% { opacity: .9; translate: -16px -14px; }
-  100% { opacity: 0; translate: -28px -24px; }
-}
+    .firework-left {
+      right: calc(100% + 5px);
+      transform: translateY(-50%) rotate(145deg);
+      animation: shootingLeft 2.5s ease-out infinite;
+    }
 
-@keyframes shootingRight {
-  0% { opacity: 0; translate: 0 0; }
-  15% { opacity: 1; }
-  75% { opacity: .9; translate: 16px -14px; }
-  100% { opacity: 0; translate: 28px -24px; }
-}
+    .firework-right {
+      left: calc(100% + 5px);
+      transform: translateY(-50%) rotate(35deg);
+      animation: shootingRight 2.5s ease-out infinite;
+      animation-delay: 1.25s;
+    }
+
+    @keyframes shootingLeft {
+      0% { opacity: 0; translate: 0 0; }
+      15% { opacity: 1; }
+      75% { opacity: .9; translate: -28px -22px; }
+      100% { opacity: 0; translate: -55px -42px; }
+    }
+
+    @keyframes shootingRight {
+      0% { opacity: 0; translate: 0 0; }
+      15% { opacity: 1; }
+      75% { opacity: .9; translate: 28px -22px; }
+      100% { opacity: 0; translate: 55px -42px; }
+    }
+
     /* Таймер */
     .countdown-section {
       text-align: center;
@@ -731,32 +721,6 @@
         gap: 13px;
       }
 
-     .date-stage {
-  margin-top: 32px;
-  margin-bottom: 32px;
-}
-
-      .date-large {
-        font-size: clamp(43px, 9.5vw, 62px);
-      }
-
-      .date-wrap {
-        padding: 5px 7px 9px;
-      }
-
-      .date-firework {
-        width: 42px;
-        height: 42px;
-      }
-
-      .firework-left {
-        right: calc(100% + 2px);
-      }
-
-      .firework-right {
-        left: calc(100% + 2px);
-      }
-
       .locations-section {
         width: calc(100% - 24px);
       }
@@ -835,73 +799,48 @@
         transform: none;
       }
     }
-    /* Огромная дата свадьбы */
-.date-large {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(76px, 12vw, 160px);
-  line-height: 1.05;
-  white-space: nowrap;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  text-shadow:
-    0 0 8px #fff,
-    0 0 18px #fff,
-    0 0 32px #fff,
-    0 0 55px rgba(255, 255, 255, 1),
-    0 0 85px rgba(190, 230, 255, .95),
-    0 0 115px rgba(160, 215, 255, .85);
-  animation: dateGlow 2.2s ease-in-out infinite alternate;
-}
+    /* Настройки даты для телефонов */
+    @media (max-width: 600px) {
+      .date-stage {
+        margin: 32px auto;
+        padding: 10px 8px;
+      }
 
-/* Дата на телефонах */
-@media (max-width: 600px) {
-  .date-large {
-    font-size: clamp(58px, 15.5vw, 100px);
-    letter-spacing: -2px;
-  }
+      .date-wrap {
+        padding: 5px 0 9px;
+      }
 
-  .date-stage {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-    /* Защищаем огромную дату от обрезания */
-.date-stage {
-  width: 100%;
-  overflow: visible;
-  padding: 12px 15px;
-  box-sizing: border-box;
-}
+      .date-large {
+        font-size: clamp(58px, 15.5vw, 100px);
+        letter-spacing: -1px;
+      }
 
-.date-wrap {
-  width: 100%;
-  overflow: visible;
-}
+      .date-firework {
+        width: 42px;
+      }
 
-.date-large {
-  display: inline-block;
-  max-width: 100%;
-  overflow: visible;
-  position: relative;
-}
+      .firework-left {
+        right: calc(100% + 2px);
+      }
 
-/* Блик не должен обрезать края даты */
-.date-wrap::after {
-  pointer-events: none;
-}
-/* Тёмно-синие цифры с белым сиянием вокруг */
-.date-large {
-  color: #081a36;
-  -webkit-text-fill-color: #081a36;
-  font-weight: 400;
-  text-shadow:
-    0 0 3px rgba(255, 255, 255, 1),
-    0 0 10px rgba(255, 255, 255, 1),
-    0 0 22px rgba(255, 255, 255, .95),
-    0 0 40px rgba(255, 255, 255, .85),
-    0 0 65px rgba(220, 240, 255, .8);
-}
+      .firework-right {
+        left: calc(100% + 2px);
+      }
+
+      @keyframes shootingLeft {
+        0% { opacity: 0; translate: 0 0; }
+        15% { opacity: 1; }
+        75% { opacity: .9; translate: -16px -14px; }
+        100% { opacity: 0; translate: -28px -24px; }
+      }
+
+      @keyframes shootingRight {
+        0% { opacity: 0; translate: 0 0; }
+        15% { opacity: 1; }
+        75% { opacity: .9; translate: 16px -14px; }
+        100% { opacity: 0; translate: 28px -24px; }
+      }
+    }
 
   </style>
 </head>
